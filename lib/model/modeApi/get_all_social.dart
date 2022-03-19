@@ -1,0 +1,64 @@
+import 'dart:convert';
+
+import 'package:get/get.dart';
+import 'package:wst/control/homecontroller.dart';
+import 'package:http/http.dart' as http;
+import 'package:wst/model/modeApi/add_user_media.dart';
+import 'package:wst/model/modeApi/get_user_profile_withmedia.dart';
+import 'package:wst/model/modelJson/get_lookup_value.dart';
+import 'package:wst/utils/constant/url.dart';
+
+List<Map> myJsonSocialAll = [];
+List<Map> UserSocialMedi = [];
+List<Map> UserSocialMediaValues = [];
+var idSocial;
+getAllSocialMidea(code, value) async {
+  final response = await http.get(Uri.parse(socialAll));
+  getLookUpValue c = getLookUpValue.fromJson(jsonDecode(response.body));
+
+  if (response.statusCode == 200) {
+    for (var i = 0; i < c.data!.length; i++) {
+      myJsonSocialAll.add(c.data![i].toJson());
+    }
+    print("===========getAllSocialMidea=============");
+    print(myJsonSocialAll);
+    print("\n");
+    print(myJsonSocialAll.runtimeType);
+    for (var i = 0; i < myJsonSocialAll.length; i++) {
+      if (myJsonSocialAll[i]["lookupCode"] == "CompetitionSocialMedia") {
+        print(myJsonSocialAll[i]["lookupCode"]);
+        print(myJsonSocialAll[i]["id"]);
+        print("\n");
+        print(myJsonSocialAll[i]["values"]);
+        print("\n");
+      } else if (myJsonSocialAll[i]["lookupCode"] == "UserSocialMedia") {
+        print(myJsonSocialAll[i]["lookupCode"]);
+        print(myJsonSocialAll[i]["id"]);
+        print("\n");
+        print(myJsonSocialAll[i]["values"]);
+        print("\n");
+
+        // print(myJsonSocialAll[i]["values"][0][id]);
+        // print(myJsonSocialAll[i]["values"][0][code]);
+
+        for (var j = 0; j < myJsonSocialAll[i]["values"].length; j++) {
+          if (myJsonSocialAll[i]["values"][j]["code"] == code) {
+            print("found type.......");
+            idSocial = myJsonSocialAll[i]["values"][j]["id"];
+            print(idSocial);
+            print(value);
+            addUserMedia(value, idSocial);
+            //getUserProfilWithMedia();
+            break;
+          } else {
+            print("not found yet");
+          }
+        }
+      } else {
+        print("not found social");
+      }
+    }
+  } else {
+    throw Exception('Failed to load country');
+  }
+}
