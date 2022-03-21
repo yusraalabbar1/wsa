@@ -6,9 +6,14 @@ import 'package:wst/model/modeApi/get_all_social.dart';
 import 'package:wst/model/modeApi/update_user.dart';
 import 'package:wst/utils/constant/color.dart';
 
-GlobalKey<FormState> formstate = new GlobalKey<FormState>();
-homecontroller controller = Get.find();
-dialogForFace(context) {
+import 'package:shared_preferences/shared_preferences.dart';
+
+dialogForFace(context) async {
+  SharedPreferences pref = await SharedPreferences.getInstance();
+  var markFace = pref.getInt('markFacebook');
+  GlobalKey<FormState> formstate = new GlobalKey<FormState>();
+  homecontroller controller = Get.find();
+
   var face;
   return showDialog(
       context: context,
@@ -46,8 +51,16 @@ dialogForFace(context) {
                       },
                       onSaved: (string) {
                         print("on saved");
+                        if (markFace == null) {
+                          pref.setInt("markFacebook", 0);
+                          markFace = 0;
+                        } else {
+                          pref.setInt("markFacebook", 1);
+                          markFace = 1;
+                        }
+
                         face = string;
-                        // controller.SaveFirstName(string);
+                        controller.SaveLinkFace(string);
                       },
                     ));
                   }),
@@ -71,8 +84,10 @@ dialogForFace(context) {
                           var formdata = formstate.currentState;
                           if (formdata!.validate()) {
                             formdata.save();
-                            getAllSocialMidea("FaceBook", face);
+                            //getAllSocialMidea("FaceBook", face, markFace);
                             print("valid");
+                            print("##################");
+                            print(markFace);
                             Navigator.of(context).pop();
                             // updateUser(first, mid, last, tel);
                             // Navigator.of(context).pop();

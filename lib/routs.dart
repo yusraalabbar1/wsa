@@ -64,7 +64,7 @@ class MyApp extends StatelessWidget {
         "sittingSecurity": ((context) => sittingSecurity()),
         "sittingNotification": ((context) => sittingNotification()),
         "infoCompet": ((context) => infoCompet()),
-        "infoAgent": ((context) => infoAgent()),
+        // "infoAgent": ((context) => infoAgent()),
         "personSub": ((context) => personSub()),
         "completPersonSub": ((context) => completPersonSub()),
         "infoVote": ((context) => infoVote()),

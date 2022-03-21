@@ -5,7 +5,7 @@ import 'package:wst/control/homecontroller.dart';
 import 'package:http/http.dart' as http;
 import 'package:wst/model/modeApi/login_model.dart';
 
-Future updaeUserMedia() async {
+Future updaeUserMedia(id, value) async {
   var headers = {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
@@ -13,7 +13,7 @@ Future updaeUserMedia() async {
   };
   var request = http.Request(
       'POST', Uri.parse('http://212.24.108.54/wsa/api/user/updateUserMedia'));
-  request.body = json.encode({"Id": 2, "Value": "https://ar-ar.facebook.com/"});
+  request.body = json.encode({id, value});
   request.headers.addAll(headers);
 
   http.StreamedResponse response = await request.send();

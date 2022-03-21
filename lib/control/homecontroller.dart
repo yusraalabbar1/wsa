@@ -29,6 +29,27 @@ class homecontroller extends GetxController {
   int i_agent = 0;
   var devicIdsave;
   var savePathImage;
+  String saveLinkFace = "";
+  String saveLinkInsta = "";
+  String saveLinktele = "";
+  void SaveLinktele(string) {
+    print("control value telegram is:");
+    saveLinktele = string;
+    update();
+  }
+
+  void SaveLinkInsta(string) {
+    print("control value insta is:");
+    saveLinkInsta = string;
+    update();
+  }
+
+  void SaveLinkFace(string) {
+    print("control value face is:");
+    saveLinkFace = string;
+    update();
+  }
+
   void SavePathImage(string) {
     print("control value path image is:");
     savePathImage = string;

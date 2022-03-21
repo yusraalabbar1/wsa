@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wst/control/homecontroller.dart';
+import 'package:wst/model/modeApi/get_user_profile_withmedia.dart';
 import 'package:wst/model/modeApi/login_model.dart';
 import 'package:wst/utils/constant/color.dart';
 import 'package:wst/view/auth/widget/themeWst.dart';
@@ -39,6 +40,13 @@ class _sittingProfileState extends State<sittingProfile> {
       telephoneNumber = pres.getString('telephoneNumber');
       countryId = pres.getInt('countryId');
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getpref();
+    getUserProfilWithMedia();
   }
 
   homecontroller controller = Get.put(homecontroller());
@@ -115,12 +123,6 @@ class _sittingProfileState extends State<sittingProfile> {
       controller.SavePathImage(imageFile);
     });
     Navigator.pop(context);
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    getpref();
   }
 
   @override

@@ -46,7 +46,8 @@ Widget part2Agent(context) {
             height: 252,
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage("assets/images/agent.png"),
+                    image: NetworkImage(
+                        "http://212.24.108.54/wsaAdmin/images/${allAgent[controller.indexAgent]['imageUrl']}"),
                     fit: BoxFit.cover)),
           ),
         ]),

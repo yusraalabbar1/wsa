@@ -4,9 +4,12 @@ import 'package:http/http.dart' as http;
 import 'package:wst/model/modeApi/login_model.dart';
 import 'package:wst/model/modelJson/model_agent.dart';
 import 'package:wst/utils/constant/url.dart';
+import 'package:wst/view/other/agentsScreens/agents_main.dart';
 
 var isSuc;
 List<Map> allAgent = [];
+
+List<Map> foundAll = [];
 Future getAllAgents() async {
   var headers = {
     'Content-Type': 'application/json',
@@ -25,6 +28,7 @@ Future getAllAgents() async {
     allAgent.add(c.data[i].toJson());
     print(c.data[i].toJson());
   }
+  foundAll = allAgent;
 
   print("***************************");
   print(allAgent);
@@ -34,11 +38,3 @@ Future getAllAgents() async {
     print(response.reasonPhrase);
   }
 }
-/*
-for (var i = 0; i < c.data.length; i++) {
-      dataAgent.add(c.data[i].toJson());
-      print("===========agent=============");
-      print(c.data[i].toJson());
-      print("===========agent=============");
-      print(c.data[i]);
-      print(dataAgent);*/

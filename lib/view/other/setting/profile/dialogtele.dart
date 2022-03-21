@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:get/get.dart';
 import 'package:wst/control/homecontroller.dart';
 import 'package:wst/model/modeApi/get_all_social.dart';
@@ -8,7 +9,9 @@ import 'package:wst/utils/constant/color.dart';
 
 GlobalKey<FormState> formstate = new GlobalKey<FormState>();
 homecontroller controller = Get.find();
-dialogForIeleg(context) {
+dialogForIeleg(context) async {
+  SharedPreferences pref = await SharedPreferences.getInstance();
+  var marktele = pref.getInt('marktele');
   var tele;
   return showDialog(
       context: context,
@@ -47,7 +50,14 @@ dialogForIeleg(context) {
                       onSaved: (string) {
                         print("on saved");
                         tele = string;
-                        // controller.SaveFirstName(string);
+                        if (marktele == null) {
+                          pref.setInt("marktele", 0);
+                          marktele = 0;
+                        } else {
+                          pref.setInt("marktele", 1);
+                          marktele = 1;
+                        }
+                        controller.SaveLinktele(string);
                       },
                     ));
                   }),
@@ -71,7 +81,7 @@ dialogForIeleg(context) {
                           var formdata = formstate.currentState;
                           if (formdata!.validate()) {
                             formdata.save();
-                            getAllSocialMidea("Telegram", tele);
+                            //getAllSocialMidea("Telegram", tele, marktele);
                             print("valid");
                             Navigator.of(context).pop();
                             // updateUser(first, mid, last, tel);

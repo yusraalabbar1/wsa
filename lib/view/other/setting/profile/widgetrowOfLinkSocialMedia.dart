@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:wst/control/homecontroller.dart';
 import 'package:wst/model/modeApi/get_all_social.dart';
 import 'package:wst/view/other/setting/profile/dialogFace.dart';
 import 'package:wst/view/other/setting/profile/dialogInsta.dart';
@@ -7,6 +9,7 @@ import 'package:wst/view/other/setting/profile/dialog_edit.dart';
 import 'package:wst/view/other/setting/profile/dialogtele.dart';
 
 Widget widgetrowOfLinkSocialMedia(context) {
+  homecontroller controller = Get.put(homecontroller());
   return Padding(
     padding: const EdgeInsets.all(15.0),
     child: Column(
@@ -27,13 +30,17 @@ Widget widgetrowOfLinkSocialMedia(context) {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Container(
-                  alignment: Alignment.topLeft,
-                  child: Text("رابط",
-                      style: TextStyle(
-                          color: Color(0xff707070),
-                          fontSize: 13,
-                          fontFamily: 'Almarai')),
-                ),
+                    alignment: Alignment.topLeft,
+                    child: GetBuilder<homecontroller>(builder: (controller) {
+                      return (Text(
+                          controller.saveLinkInsta == ""
+                              ? ""
+                              : controller.saveLinkInsta,
+                          style: TextStyle(
+                              color: Color(0xff707070),
+                              fontSize: 13,
+                              fontFamily: 'Almarai')));
+                    })),
                 IconButton(
                     onPressed: () {
                       dialogForInsta(context);
@@ -74,13 +81,17 @@ Widget widgetrowOfLinkSocialMedia(context) {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Container(
-                  alignment: Alignment.topLeft,
-                  child: Text("رابط",
-                      style: TextStyle(
-                          color: Color(0xff707070),
-                          fontSize: 13,
-                          fontFamily: 'Almarai')),
-                ),
+                    alignment: Alignment.topLeft,
+                    child: GetBuilder<homecontroller>(builder: (controller) {
+                      return (Text(
+                          controller.saveLinkFace == ""
+                              ? ""
+                              : controller.saveLinkFace,
+                          style: TextStyle(
+                              color: Color(0xff707070),
+                              fontSize: 13,
+                              fontFamily: 'Almarai')));
+                    })),
                 IconButton(
                     onPressed: () {
                       dialogForFace(context);
@@ -121,13 +132,17 @@ Widget widgetrowOfLinkSocialMedia(context) {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Container(
-                  alignment: Alignment.topLeft,
-                  child: Text("رابط",
-                      style: TextStyle(
-                          color: Color(0xff707070),
-                          fontSize: 13,
-                          fontFamily: 'Almarai')),
-                ),
+                    alignment: Alignment.topLeft,
+                    child: GetBuilder<homecontroller>(builder: (controller) {
+                      return (Text(
+                          controller.saveLinktele == ""
+                              ? ""
+                              : controller.saveLinktele,
+                          style: TextStyle(
+                              color: Color(0xff707070),
+                              fontSize: 13,
+                              fontFamily: 'Almarai')));
+                    })),
                 IconButton(
                     onPressed: () {
                       dialogForIeleg(context);

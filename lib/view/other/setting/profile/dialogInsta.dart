@@ -6,9 +6,13 @@ import 'package:wst/model/modeApi/get_all_social.dart';
 import 'package:wst/model/modeApi/update_user.dart';
 import 'package:wst/utils/constant/color.dart';
 
+import 'package:shared_preferences/shared_preferences.dart';
+
 GlobalKey<FormState> formstate = new GlobalKey<FormState>();
 homecontroller controller = Get.find();
-dialogForInsta(context) {
+dialogForInsta(context) async {
+  SharedPreferences pref = await SharedPreferences.getInstance();
+  var markInsta = pref.getInt('markInsta');
   var insta;
   return showDialog(
       context: context,
@@ -47,7 +51,14 @@ dialogForInsta(context) {
                       onSaved: (string) {
                         print("on saved");
                         insta = string;
-                        // controller.SaveFirstName(string);
+                        if (markInsta == null) {
+                          pref.setInt("markInsta", 0);
+                          markInsta = 0;
+                        } else {
+                          pref.setInt("markInsta", 1);
+                          markInsta = 1;
+                        }
+                        controller.SaveLinkInsta(string);
                       },
                     ));
                   }),
@@ -71,7 +82,8 @@ dialogForInsta(context) {
                           var formdata = formstate.currentState;
                           if (formdata!.validate()) {
                             formdata.save();
-                            getAllSocialMidea("Instgram", insta);
+                            print(markInsta);
+                            //getAllSocialMidea("Instgram", insta, markInsta);
                             print("valid");
                             Navigator.of(context).pop();
                             // updateUser(first, mid, last, tel);

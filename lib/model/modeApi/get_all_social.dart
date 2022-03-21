@@ -5,6 +5,7 @@ import 'package:wst/control/homecontroller.dart';
 import 'package:http/http.dart' as http;
 import 'package:wst/model/modeApi/add_user_media.dart';
 import 'package:wst/model/modeApi/get_user_profile_withmedia.dart';
+import 'package:wst/model/modeApi/update_user_media.dart';
 import 'package:wst/model/modelJson/get_lookup_value.dart';
 import 'package:wst/utils/constant/url.dart';
 
@@ -12,7 +13,7 @@ List<Map> myJsonSocialAll = [];
 List<Map> UserSocialMedi = [];
 List<Map> UserSocialMediaValues = [];
 var idSocial;
-getAllSocialMidea(code, value) async {
+getAllSocialMidea(code, value, mark) async {
   final response = await http.get(Uri.parse(socialAll));
   getLookUpValue c = getLookUpValue.fromJson(jsonDecode(response.body));
 
@@ -47,7 +48,16 @@ getAllSocialMidea(code, value) async {
             idSocial = myJsonSocialAll[i]["values"][j]["id"];
             print(idSocial);
             print(value);
-            addUserMedia(value, idSocial);
+            if (mark == 0) {
+              //add link
+              print("add link");
+              addUserMedia(value, idSocial);
+            } else {
+              //update link
+              print("update link");
+              updaeUserMedia(idSocial, value);
+            }
+
             //getUserProfilWithMedia();
             break;
           } else {
