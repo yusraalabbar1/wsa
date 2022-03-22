@@ -93,10 +93,10 @@ class _competitionsMainState extends State<competitionsMain> {
         return GetBuilder<homecontroller>(builder: (controller) {
           return (InkWell(
             onTap: () {
-              controller.SavenameComp(
-                  foundCompitition[index]['nameCompitition']);
-              controller.SavemonyrComp(foundCompitition[index]['mony']);
+              controller.SavenameComp(foundCompitition[index]['name']);
+              controller.SavemonyrComp(foundCompitition[index]['awardAmount']);
               controller.SavediscrpComp(foundCompitition[index]['description']);
+              controller.SaveidComp(foundCompitition[index]['competitionsId']);
               Navigator.of(context).pushNamed("infoCompet");
             },
             child: Container(

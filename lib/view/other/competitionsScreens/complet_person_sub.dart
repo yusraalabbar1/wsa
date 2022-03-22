@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wst/control/homecontroller.dart';
+import 'package:wst/model/modeApi/add_member_compittion.dart';
 import 'package:wst/utils/constant/color.dart';
 
 class completPersonSub extends StatelessWidget {
@@ -115,7 +116,7 @@ class completPersonSub extends StatelessWidget {
                                   Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceAround,
-                                    children: [
+                                    children: const [
                                       Text("تم خصم",
                                           style: TextStyle(
                                               color: MyColors.color3,
@@ -152,8 +153,10 @@ class completPersonSub extends StatelessWidget {
                                               color: MyColors.color1,
                                               width: 2)),
                                       onPressed: () {
-                                        Navigator.of(context)
-                                            .pushNamed("homePage");
+                                        addMemberCompitition(
+                                            context, controller.nameFake);
+                                        // Navigator.of(context)
+                                        //     .pushNamed("homePage");
                                       },
                                       child: const Text(
                                         "العودة ",

@@ -19,7 +19,7 @@ class homecontroller extends GetxController {
   String saveEmailForNewPassWord = "";
 //end
   String nameComp = "";
-  int monyrComp = 0;
+  double monyrComp = 0.0;
   String discrpComp = "";
   int indexAgent = 0;
   String nameFake = "";
@@ -32,6 +32,13 @@ class homecontroller extends GetxController {
   String saveLinkFace = "";
   String saveLinkInsta = "";
   String saveLinktele = "";
+  int saveidComp = 0;
+  void SaveidComp(string) {
+    print("control value SaveidComp is:");
+    saveidComp = string;
+    update();
+  }
+
   void SaveLinktele(string) {
     print("control value telegram is:");
     saveLinktele = string;
