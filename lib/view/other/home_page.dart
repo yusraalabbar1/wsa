@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wst/control/homecontroller.dart';
+import 'package:wst/model/modeApi/GetNotification.dart';
+import 'package:wst/model/modeApi/common_questions.dart';
 import 'package:wst/model/modeApi/get_all_social.dart';
 import 'package:wst/model/modeApi/infoNotific.dart';
+import 'package:wst/model/modeApi/model_compitition.dart';
 import 'package:wst/utils/constant/url.dart';
 import 'package:wst/view/other/agentsScreens/agents_main.dart';
 import 'package:wst/view/other/competitionsScreens/competitions_main.dart';
@@ -29,6 +32,9 @@ class _homePageState extends State<homePage> {
   void initState() {
     super.initState();
     infoNotification();
+    GetNotification();
+    commonQuestionsapi();
+    allCompititionapi();
   }
 
 ///////////////////////////////////

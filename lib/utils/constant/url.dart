@@ -17,3 +17,7 @@ String otp_time =
 String otp_verify_pass = 'http://212.24.108.54/wsa/api/user/verifyOtp';
 String otp_verify_signup = 'http://212.24.108.54/wsa/api/user/verifyOtp';
 String socialAll = 'http://212.24.108.54/wsa/api/lookup/LookupValues';
+String url_common_question = 'http://212.24.108.54/wsa/api/commonQuestion';
+String all_compitition = "http://212.24.108.54/wsa/api/Competitions/filter";
+String one_compitition =
+    "http://212.24.108.54/wsa/api/Competitions/filter?name=${"f"}";

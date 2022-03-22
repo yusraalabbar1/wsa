@@ -32,6 +32,7 @@ import 'package:wst/view/other/home_page.dart';
 import 'package:wst/view/other/register1Screens/register1_main.dart';
 import 'package:wst/view/other/setting/notification/sitting_notification.dart';
 import 'package:wst/view/other/setting/profile/sitting_profile.dart';
+import 'package:wst/view/other/setting/question.dart';
 import 'package:wst/view/other/setting/secutity/sitting_security.dart';
 
 import 'view/auth/page/forgetPassword/email_for_forgetpassword.dart';
@@ -78,6 +79,7 @@ class MyApp extends StatelessWidget {
         "qr": ((context) => qr()),
         "gallary": ((context) => gallary()),
         "register1Main": ((context) => register1Main()),
+        "question": ((context) => const questionComm()),
       },
       supportedLocales: [
         const Locale('en'),

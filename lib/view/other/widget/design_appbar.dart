@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:wst/control/homecontroller.dart';
+import 'package:wst/model/modeApi/GetNotification.dart';
 import 'package:wst/utils/constant/color.dart';
 import 'package:wst/view/auth/widget/themeWst.dart';
 import 'package:wst/view/other/homeMainScreens/widget_list_notification.dart';
@@ -22,34 +23,7 @@ Text title() {
 
 PickedFile? imageFile = null;
 var _selected;
-var notif = [
-  "نص افتراضي للاشعار الأول",
-  "نص افتراضي للاشعار الثاني",
-  "نص افتراضي للاشعار الثالث",
-  "نص افتراضي للاشعار الرابع"
-];
-var notifmap = [
-  {
-    "name": "نص افتراضي للاشعار الأول",
-    "id": "1",
-    "images": "assets/images/1.png"
-  },
-  {
-    "name": "نص افتراضي للاشعار الثاني",
-    "id": "1",
-    "images": "assets/images/1.png"
-  },
-  {
-    "name": "نص افتراضي للاشعار الثالث",
-    "id": "1",
-    "images": "assets/images/1.png"
-  },
-  {
-    "name": "نص افتراضي للاشعار الرابع",
-    "id": "1",
-    "images": "assets/images/1.png"
-  }
-];
+
 Row rowAppbar(context) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -105,31 +79,33 @@ Row rowAppbar(context) {
                   color: Colors.white,
                 ),
                 items: notifmap.map((Map map) {
-                  return new DropdownMenuItem<String>(
+                  return DropdownMenuItem<String>(
                     value: map["id"].toString(),
                     child: Column(
                       children: [
-                        SizedBox(
-                          height: 5,
+                        Text(
+                          map["title"].toString(),
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 11,
+                              fontFamily: 'Almarai'),
+                          maxLines: 1,
                         ),
-                        Row(
-                          children: [
-                            Image.asset(
-                              "${map["images"].toString()}",
-                              height: 25,
-                              width: 25,
-                            ),
-                            SizedBox(
-                              width: 3,
-                            ),
-                            Text(
-                              map["name"].toString(),
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 11,
-                                  fontFamily: 'Almarai'),
-                            ),
-                          ],
+                        Text(
+                          map["body"].toString(),
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 7,
+                              fontFamily: 'Almarai'),
+                          maxLines: 1,
+                        ),
+                        // leading: Icon(
+                        //   Icons.notifications_active,
+                        //   color: MyColors.color1,
+                        // ),
+
+                        SizedBox(
+                          height: 3,
                         ),
                         Divider(
                           color: Colors.white,

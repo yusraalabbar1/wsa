@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wst/control/homecontroller.dart';
+import 'package:wst/model/modeApi/model_compitition.dart';
 import 'package:wst/utils/constant/color.dart';
 import 'package:wst/view/auth/widget/themeWst.dart';
 import 'package:wst/view/other/competitionsScreens/widget_all_person_cont.dart';
@@ -53,7 +54,7 @@ class _infoVoteState extends State<infoVote> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "${allCompitition[controller.indexCopititon]["nameCompitition"]}",
+                                "${MyCompitition[controller.indexCopititon]["name"]}",
                                 style: TextStyle(
                                     color: MyColors.color3,
                                     fontSize: 14,
@@ -80,7 +81,7 @@ class _infoVoteState extends State<infoVote> {
                                 height: 5,
                               ),
                               Text(
-                                "${allCompitition[controller.indexCopititon]["mony"]}",
+                                "${MyCompitition[controller.indexCopititon]["awardAmount"]}",
                                 style: TextStyle(
                                     color: MyColors.color3,
                                     fontSize: 14,
@@ -97,7 +98,7 @@ class _infoVoteState extends State<infoVote> {
             Padding(
               padding: const EdgeInsets.all(19.0),
               child: Text(
-                "${allCompitition[controller.indexCopititon]["nameCompitition"]}",
+                "${MyCompitition[controller.indexCopititon]["name"]}",
                 style: TextStyle(
                     color: MyColors.color3,
                     fontSize: 17,
@@ -107,7 +108,7 @@ class _infoVoteState extends State<infoVote> {
             Padding(
               padding: const EdgeInsets.only(left: 23, right: 23, top: 5),
               child: Text(
-                "${allCompitition[controller.indexCopititon]["description"]}",
+                "${MyCompitition[controller.indexCopititon]["description"]}",
                 style: TextStyle(
                     color: MyColors.color3,
                     fontSize: 13,

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wst/control/homecontroller.dart';
+import 'package:wst/model/modeApi/model_compitition.dart';
 import 'package:wst/view/other/competitionsScreens/widgetc_alItem_compitition.dart';
 import 'package:wst/view/other/homeMainScreens/widget_gallary.dart';
 
@@ -14,7 +15,7 @@ Widget pageVote(context) {
       width: MediaQuery.of(context).size.width,
 
       child: ListView.builder(
-          itemCount: allCompitition.length,
+          itemCount: MyCompitition.length,
           itemBuilder: (context, index) {
             return InkWell(
               onTap: (() {
@@ -43,7 +44,7 @@ Widget pageVote(context) {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "${allCompitition[index]['nameCompitition']}",
+                                "${MyCompitition[index]['nameCompitition']}",
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 14,
@@ -53,7 +54,7 @@ Widget pageVote(context) {
                                 height: 5,
                               ),
                               Text(
-                                "${allCompitition[index]['subTitle']}",
+                                "صوت الآن في المسابقة",
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 14,
@@ -70,7 +71,7 @@ Widget pageVote(context) {
                                 height: 5,
                               ),
                               Text(
-                                "${allCompitition[index]['mony']}",
+                                "${MyCompitition[index]['awardAmount']}",
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 14,

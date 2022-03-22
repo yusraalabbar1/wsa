@@ -140,6 +140,9 @@ Widget drawerMain(context) {
             ),
           ),
           InkWell(
+            onTap: () {
+              Navigator.of(context).pushNamed("question");
+            },
             child: Row(
               children: [
                 Container(
