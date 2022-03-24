@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:wst/utils/constant/color.dart';
 
-Container wstContainer(context) {
+Container wstContainer1(context) {
   return Container(
       height: (MediaQuery.of(context).size.height) / 5,
+      width: MediaQuery.of(context).size.width,
+      child: Image.asset("assets/images/logo.png"));
+}
+
+Container wstContainer(context) {
+  return Container(
+      height: (MediaQuery.of(context).size.height) / 7,
       width: MediaQuery.of(context).size.width,
       child: Image.asset("assets/images/logo.png"));
 }

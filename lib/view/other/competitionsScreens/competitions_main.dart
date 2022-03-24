@@ -18,6 +18,7 @@ class competitionsMain extends StatefulWidget {
 }
 
 class _competitionsMainState extends State<competitionsMain> {
+  homecontroller controller = Get.put(homecontroller());
   List filteredUsers = [];
   _onSearchFieldChanged(String value) async {
     // to fill out next!
@@ -45,34 +46,38 @@ class _competitionsMainState extends State<competitionsMain> {
         Container(
           decoration: boxDecorationMain(),
         ),
-        ListView(
-          shrinkWrap: true,
-          children: [
-            rowAppbar(context),
-            widgetTowButtonCompitition(),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Center(
-                child: TextField(
-                  decoration: InputDecoration(
-                      contentPadding: EdgeInsets.all(15.0),
-                      prefixIcon: Icon(
-                        Icons.search,
-                        color: MyColors.color1,
+        controller.saveMapCompitition == null
+            ? Text("loading...")
+            : ListView(
+                shrinkWrap: true,
+                children: [
+                  rowAppbar(context),
+                  widgetTowButtonCompitition(),
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Center(
+                      child: TextField(
+                        decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(15.0),
+                            prefixIcon: Icon(
+                              Icons.search,
+                              color: MyColors.color1,
+                            ),
+                            hintText: 'ابحث عن مسابقة'),
+                        onChanged: (string) {
+                          _onSearchFieldChanged(string);
+                        },
                       ),
-                      hintText: 'ابحث عن مسابقة'),
-                  onChanged: (string) {
-                    _onSearchFieldChanged(string);
-                  },
-                ),
-              ),
-            ),
-            //pageCompit(),
-            GetBuilder<homecontroller>(builder: (controller) {
-              return (controller.i == 0 ? pageCompit() : pageVote(context));
-            }),
-          ],
-        )
+                    ),
+                  ),
+                  //pageCompit(),
+                  GetBuilder<homecontroller>(builder: (controller) {
+                    return (controller.i == 0
+                        ? pageCompit()
+                        : pageVote(context));
+                  }),
+                ],
+              )
       ],
     ));
   }

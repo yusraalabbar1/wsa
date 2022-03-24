@@ -1,6 +1,7 @@
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:wst/control/homecontroller.dart';
 import 'package:wst/thems.dart';
 import 'package:wst/view/auth/page/forgetPassword/cofirm_code.dart';
 import 'package:wst/view/auth/page/signup/complet_signup.dart';
@@ -40,12 +41,14 @@ import 'view/auth/page/signup/Pin_code_verification_screen.dart';
 import 'view/other/competitionsScreens/info_vote.dart';
 
 class MyApp extends StatelessWidget {
+  homecontroller controller = Get.put(homecontroller());
   // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: startPage(),
+      home: controller.saveUsersIsLogin == true ? homePage() : startPage(),
       theme: CustomTheme.lightTheme,
       routes: {
         "startPage": ((context) => startPage()),

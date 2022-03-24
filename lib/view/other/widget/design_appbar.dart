@@ -9,6 +9,7 @@ import 'package:wst/model/modeApi/GetNotification.dart';
 import 'package:wst/utils/constant/color.dart';
 import 'package:wst/view/auth/widget/themeWst.dart';
 import 'package:wst/view/other/homeMainScreens/widget_list_notification.dart';
+import 'package:wst/view/other/setting/profile/dialogInsta.dart';
 
 Text title() {
   return Text(
@@ -25,6 +26,7 @@ PickedFile? imageFile = null;
 var _selected;
 
 Row rowAppbar(context) {
+  homecontroller controller = Get.put(homecontroller());
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
@@ -78,7 +80,7 @@ Row rowAppbar(context) {
                   size: 35,
                   color: Colors.white,
                 ),
-                items: notifmap.map((Map map) {
+                items: controller.saveListNotifications.map((Map map) {
                   return DropdownMenuItem<String>(
                     value: map["id"].toString(),
                     child: Column(

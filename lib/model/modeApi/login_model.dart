@@ -8,6 +8,7 @@ import 'package:http/http.dart' as http;
 import 'package:wst/control/homecontroller.dart';
 import 'package:wst/model/modelJson/resul_login_model.dart';
 import 'package:wst/utils/constant/url.dart';
+import 'package:wst/view/other/home_page.dart';
 
 var successloginresult;
 var tokenloginresult;
@@ -21,6 +22,7 @@ var midNamepref;
 var lastNamepref;
 var phonepref;
 var passPref;
+bool isLogin = false;
 Future send_inf_login(email, password, context) async {
   homecontroller controller = Get.put(homecontroller());
   print("========information in function==========");
@@ -54,6 +56,16 @@ Future send_inf_login(email, password, context) async {
       print(tokenloginresult);
       print(dataloginresult);
       /************************************** */
+      print("IsLogin: ****");
+      SharedPreferences presIsLogin = await SharedPreferences.getInstance();
+      presIsLogin.setBool("isLogin", true);
+      isLogin = presIsLogin.getBool('isLogin')!;
+      print("******************************");
+      print(isLogin);
+      print("******************************");
+      controller.SaveUsersIsLogin(isLogin);
+      /************************************** */
+
       print(dataloginresult["id"]);
       SharedPreferences presid = await SharedPreferences.getInstance();
       presid.setInt("id", dataloginresult["id"]);
@@ -114,7 +126,11 @@ Future send_inf_login(email, password, context) async {
       phonepref = presphone.getString('telephoneNumber');
       controller.SaveNumberPhone(phonepref);
 
-      Navigator.of(context).pushReplacementNamed("homePage");
+      // Navigator.of(context).pushReplacementNamed("homePage");
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (BuildContext context) => new homePage()),
+          (Route<dynamic> route) => false);
     } else {
       AwesomeDialog(
               context: context,

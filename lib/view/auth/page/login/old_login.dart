@@ -36,10 +36,15 @@ class _oldLoginState extends State<oldLogin> {
             key: formstate,
             child: Container(
               decoration: boxDecorationMain(),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+              child: ListView(
                 children: [
+                  SizedBox(
+                    height: 50,
+                  ),
                   wstContainer(context),
+                  SizedBox(
+                    height: 50,
+                  ),
                   Container(
                     alignment: Alignment.center,
                     padding:

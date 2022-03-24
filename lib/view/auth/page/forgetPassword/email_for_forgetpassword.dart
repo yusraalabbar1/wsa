@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wst/control/homecontroller.dart';
+import 'package:wst/model/modeApi/return_id_froml_email.dart';
 import 'package:wst/utils/constant/color.dart';
 import 'package:wst/view/auth/widget/themeWst.dart';
 
@@ -50,6 +51,7 @@ class _emailForForgetPasswordState extends State<emailForForgetPassword> {
                           onSaved: (string) {
                             print("on saved");
                             email = string;
+                            getUserIdFromEmail(email, context);
                             controller.SaveEmailForNewPassWord(string);
                           },
                           validator: (text) {
@@ -85,6 +87,7 @@ class _emailForForgetPasswordState extends State<emailForForgetPassword> {
                           var formdata = formstate.currentState;
                           if (formdata!.validate()) {
                             formdata.save();
+
                             Navigator.of(context).pushNamed("passwordNew");
                           }
                         },

@@ -1,3 +1,5 @@
+import 'package:get/get.dart';
+import 'package:wst/control/homecontroller.dart';
 import 'package:wst/model/modeApi/login_model.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
@@ -7,6 +9,7 @@ import 'package:wst/utils/constant/url.dart';
 List<Map> MyCompitition = [];
 List<Map> foundCompitition = [];
 Future allCompititionapi() async {
+  homecontroller controller = Get.put(homecontroller());
   var headers = {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
@@ -21,6 +24,7 @@ Future allCompititionapi() async {
     for (var i = 0; i < c.data.length; i++) {
       MyCompitition.add(c.data[i].toJson());
     }
+    controller.SaveMapCompitition(MyCompitition);
     foundCompitition = MyCompitition;
     print("===========allCompitition=============");
     print(MyCompitition);

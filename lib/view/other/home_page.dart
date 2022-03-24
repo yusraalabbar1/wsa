@@ -34,6 +34,7 @@ class _homePageState extends State<homePage> {
     infoNotification();
     GetNotification();
     commonQuestionsapi();
+    MyCompitition = [];
     allCompititionapi();
   }
 
@@ -105,61 +106,15 @@ class _homePageState extends State<homePage> {
           ),
         ],
         color: Color(0xff1C2948),
-        // buttonBackgroundColor: Color(0xff62CAF1),
-        // buttonBackgroundColor: Color(0xff1C2948),
         backgroundColor: Colors.transparent,
         animationCurve: Curves.easeInOut,
         animationDuration: Duration(milliseconds: 500),
-        // onTap: (index) {
-        //   setState(() {
-        //     _onItemTapped;
-        //   });
-        // },
         onTap: _onItemTapped,
         letIndexChange: (index) => true,
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
-      /* Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
-      ),
-
-      
-      bottomNavigationBar: Container(
-        height: 70,
-        child: BottomNavigationBar(
-          unselectedItemColor: Colors.white,
-          showUnselectedLabels: false,
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: Color(0xff1C2948),
-          currentIndex: _selectedIndex,
-          onTap: _onItemTapped,
-          selectedItemColor: Colors.white,
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.support_agent),
-              label: 'الوكلاء'.tr,
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.analytics_sharp),
-              label: 'المسابقات'.tr,
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'الرئيسية'.tr,
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'السجل'.tr,
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.settings),
-              label: 'السجل'.tr,
-            ),
-          ],
-        ),
-      ),*/
     );
   }
 }

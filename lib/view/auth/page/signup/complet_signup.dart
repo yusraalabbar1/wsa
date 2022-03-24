@@ -33,9 +33,11 @@ class _completSignUpState extends State<completSignUp> {
             decoration: boxDecorationMain(),
             child: Form(
               key: formstate,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+              child: ListView(
                 children: [
+                  SizedBox(
+                    height: 50,
+                  ),
                   wstContainer(context),
                   Container(
                     alignment: Alignment.center,

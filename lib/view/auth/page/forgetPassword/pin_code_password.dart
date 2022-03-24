@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:wst/control/homecontroller.dart';
 import 'package:wst/model/modeApi/getcountery.dart';
+import 'package:wst/model/modeApi/return_id_froml_email.dart';
 import 'package:wst/model/modeApi/verify_model_forget_password.dart';
 
 class pinPassword extends StatefulWidget {
@@ -225,8 +226,8 @@ class _pinPasswordState extends State<pinPassword> {
                         setState(
                           () {
                             hasError = false;
-                            verifyModelPassword(1, currentText, context,
-                                controller.newPassword);
+                            verifyModelPassword(idUserFromEmail, currentText,
+                                context, controller.newPassword);
                           },
                         );
                       }

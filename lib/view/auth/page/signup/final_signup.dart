@@ -205,6 +205,8 @@ class _finalLoginState extends State<finalLogin> {
                                 controller.saveCountryid,
                                 controller.savecityId,
                                 controller.saveNumberPhone,
+                                controller.saveCodeMarkting,
+                                controller.devicIdsave,
                                 context);
                           }
                         },

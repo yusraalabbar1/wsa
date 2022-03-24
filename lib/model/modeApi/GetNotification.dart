@@ -1,6 +1,8 @@
 import 'dart:convert';
 
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:wst/control/homecontroller.dart';
 import 'package:wst/model/modeApi/login_model.dart';
 import 'package:wst/model/modelJson/model_agent.dart';
 import 'package:wst/model/modelJson/model_all_notifications.dart';
@@ -9,6 +11,7 @@ import 'package:wst/view/other/agentsScreens/agents_main.dart';
 
 List<Map> notifmap = [];
 Future GetNotification() async {
+  homecontroller controller = Get.put(homecontroller());
   var headers = {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
@@ -28,6 +31,7 @@ Future GetNotification() async {
       print(notifmap);
       print(notifmap.runtimeType);
     }
+    controller.SaveListNotifications(notifmap);
   } else {
     print(response.reasonPhrase);
   }

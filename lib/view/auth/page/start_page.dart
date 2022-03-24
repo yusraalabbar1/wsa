@@ -76,7 +76,7 @@ class _startPageState extends State<startPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                wstContainer(context),
+                wstContainer1(context),
                 Container(
                   margin: const EdgeInsets.only(bottom: 40),
                   child: const Text(

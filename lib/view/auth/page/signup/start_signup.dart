@@ -42,11 +42,15 @@ class _loginState extends State<login> {
             decoration: boxDecorationMain(),
             child: Form(
               key: formstate,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+              child: ListView(
                 children: [
+                  SizedBox(
+                    height: 50,
+                  ),
                   wstContainer(context),
-
+                  SizedBox(
+                    height: 20,
+                  ),
                   Container(
                     alignment: Alignment.centerRight,
                     padding:
@@ -111,11 +115,13 @@ class _loginState extends State<login> {
                                         value: map["id"].toString(),
                                         child: Row(
                                           children: <Widget>[
-                                            // Container(
-                                            //     child: Image.network(
-                                            //         "http://212.24.108.54/wsa/" +
-                                            //             map["countryFlag"])
-                                            //             ),
+                                            Container(
+                                                child: Image.network(
+                                              "http://212.24.108.54/wsaAdmin/images/" +
+                                                  map["countryFlag"],
+                                              height: 20,
+                                              width: 20,
+                                            )),
                                             Container(
                                                 margin: const EdgeInsets.only(
                                                     right: 10),
@@ -183,6 +189,34 @@ class _loginState extends State<login> {
                       }),
                     ),
                   ),
+                  Container(
+                    alignment: Alignment.centerRight,
+                    padding:
+                        const EdgeInsets.only(left: 30, right: 50, bottom: 10),
+                    child: Text(
+                      "الكود التسويقي / (اختياري)",
+                      style: Theme.of(context).textTheme.headline4,
+                    ),
+                  ),
+
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(left: 30, right: 30, bottom: 10),
+                    child: Center(
+                      child: GetBuilder<homecontroller>(builder: (controller) {
+                        return (TextFormField(
+                          style: TextStyle(color: MyColors.color3),
+                          onSaved: (string) {
+                            print("on saved");
+                            TelephoneNumber = string;
+                            controller.SaveCodeMarkting(string);
+                            //function for know is Exist or no
+                          },
+                        ));
+                      }),
+                    ),
+                  ),
+
                   Center(
                     child: Container(
                       width: double.infinity,
