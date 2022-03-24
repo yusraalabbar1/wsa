@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wst/control/homecontroller.dart';
+import 'package:wst/model/modeApi/add_member_compittion.dart';
 import 'package:wst/model/modeApi/allMemberCompitition.dart';
 import 'package:wst/utils/constant/color.dart';
 import 'package:wst/view/auth/widget/themeWst.dart';
@@ -226,8 +227,8 @@ class personSub extends StatelessWidget {
                                                   formstate.currentState;
                                               if (formdata!.validate()) {
                                                 formdata.save();
-                                                Navigator.of(context).pushNamed(
-                                                    "completPersonSub");
+                                                addMemberCompitition(context,
+                                                    controller.nameFake);
                                               } else {
                                                 print(
                                                     "not validddddddddddddddd");

@@ -40,6 +40,7 @@ Future addMemberCompitition(context, nick) async {
   print("==============================");
   if (response.statusCode == 200) {
     if (c.isSuccess == true) {
+      Navigator.of(context).pushNamed("completPersonSub");
       AwesomeDialog(
               context: context,
               dialogType: DialogType.SUCCES,

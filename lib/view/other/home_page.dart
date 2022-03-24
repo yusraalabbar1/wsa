@@ -27,6 +27,14 @@ class homePage extends StatefulWidget {
   State<homePage> createState() => _homePageState();
 }
 
+final List<Widget> widgetOptions = <Widget>[
+  agentsMain(),
+  competitionsMain(),
+  homeMain(),
+  register1Main(),
+  register2Main(),
+];
+
 class _homePageState extends State<homePage> {
   int _page = 0;
   GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
@@ -49,13 +57,7 @@ class _homePageState extends State<homePage> {
   var lim;
 
   int _selectedIndex = 2;
-  final List<Widget> _widgetOptions = <Widget>[
-    agentsMain(),
-    competitionsMain(),
-    homeMain(),
-    register1Main(),
-    register2Main(),
-  ];
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -119,7 +121,7 @@ class _homePageState extends State<homePage> {
         letIndexChange: (index) => true,
       ),
       body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
+        child: widgetOptions.elementAt(_selectedIndex),
       ),
     );
   }

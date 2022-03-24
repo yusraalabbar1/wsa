@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:wst/control/homecontroller.dart';
 import 'package:wst/model/modeApi/add_member_compittion.dart';
 import 'package:wst/utils/constant/color.dart';
+import 'package:wst/view/other/home_page.dart';
 
 class completPersonSub extends StatelessWidget {
   const completPersonSub({Key? key}) : super(key: key);
@@ -154,8 +155,11 @@ class completPersonSub extends StatelessWidget {
                                               color: MyColors.color1,
                                               width: 2)),
                                       onPressed: () {
-                                        addMemberCompitition(
-                                            context, controller.nameFake);
+                                        Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                                builder:
+                                                    (BuildContext context) =>
+                                                        widgetOptions[2]));
                                         // Navigator.of(context)
                                         //     .pushNamed("homePage");
                                       },

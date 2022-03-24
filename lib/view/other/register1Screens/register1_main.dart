@@ -54,7 +54,7 @@ class _register1Main extends State<register1Main> {
               ),
             ),
             Container(
-              height: 284,
+              height: 350,
               margin: EdgeInsets.all(15),
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wst/control/homecontroller.dart';
 import 'package:wst/model/modeApi/userBalancLog.dart';
+import 'package:wst/utils/constant/color.dart';
 
 Widget widgetRigerter2moy() {
   return Padding(
@@ -16,17 +17,33 @@ Widget widgetRigerter2moy() {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     InkWell(
-                      onTap: (() {
-                        // controller.SaveindexCopititon(index);
-                        // Navigator.of(context).pushNamed("infoVote");
-                      }),
-                      child: Text("${recived[index]['message']}",
-                          style: TextStyle(
-                              color: Colors.white,
-                              height: 1.5,
-                              fontSize: 12,
-                              fontFamily: 'Almarai')),
-                    ),
+                        onTap: (() {
+                          // controller.SaveindexCopititon(index);
+                          // Navigator.of(context).pushNamed("infoVote");
+                        }),
+                        child: Column(
+                          children: [
+                            Container(
+                              alignment: Alignment.topRight,
+                              child: Text("${recived[index]['message']}",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      height: 1.5,
+                                      fontSize: 12,
+                                      fontFamily: 'Almarai')),
+                            ),
+                            Container(
+                              alignment: Alignment.topRight,
+                              child: Text(
+                                  "تاريخ: ${recived[index]['createDate']}",
+                                  style: TextStyle(
+                                      color: MyColors.color1,
+                                      height: 1.5,
+                                      fontSize: 12,
+                                      fontFamily: 'Almarai')),
+                            ),
+                          ],
+                        )),
                     SizedBox(
                       height: 5,
                     ),
