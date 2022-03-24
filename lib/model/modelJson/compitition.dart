@@ -44,6 +44,10 @@ class Datum {
     required this.tourOneDate,
     required this.currentTourId,
     required this.currentTourName,
+    required this.currentTourTimeLimit,
+    required this.memberCount,
+    required this.maxMember,
+    required this.remanningMember,
     required this.balance,
     required this.active,
     required this.competitionTours,
@@ -56,11 +60,15 @@ class Datum {
   double amount;
   String imageUrl;
   DateTime tourOneDate;
-  dynamic currentTourId;
-  dynamic currentTourName;
+  var currentTourId;
+  var currentTourName;
+  var currentTourTimeLimit;
+  int memberCount;
+  int maxMember;
+  int remanningMember;
   double balance;
   bool active;
-  List<CompetitionTour> competitionTours;
+  List<dynamic> competitionTours;
 
   factory Datum.fromJson(Map<String, dynamic> json) => Datum(
         competitionsId: json["competitionsId"],
@@ -70,12 +78,20 @@ class Datum {
         amount: json["amount"],
         imageUrl: json["imageUrl"],
         tourOneDate: DateTime.parse(json["tourOneDate"]),
-        currentTourId: json["currentTourId"],
-        currentTourName: json["currentTourName"],
+        currentTourId:
+            json["currentTourId"] == null ? null : json["currentTourId"],
+        currentTourName:
+            json["currentTourName"] == null ? null : json["currentTourName"],
+        currentTourTimeLimit: json["currentTourTimeLimit"] == null
+            ? null
+            : json["currentTourTimeLimit"],
+        memberCount: json["memberCount"],
+        maxMember: json["maxMember"],
+        remanningMember: json["remanningMember"],
         balance: json["balance"],
         active: json["active"],
-        competitionTours: List<CompetitionTour>.from(
-            json["competitionTours"].map((x) => CompetitionTour.fromJson(x))),
+        competitionTours:
+            List<dynamic>.from(json["competitionTours"].map((x) => x)),
       );
 
   Map<String, dynamic> toJson() => {
@@ -86,52 +102,15 @@ class Datum {
         "amount": amount,
         "imageUrl": imageUrl,
         "tourOneDate": tourOneDate.toIso8601String(),
-        "currentTourId": currentTourId,
-        "currentTourName": currentTourName,
+        "currentTourId": currentTourId == null ? null : currentTourId,
+        "currentTourName": currentTourName == null ? null : currentTourName,
+        "currentTourTimeLimit":
+            currentTourTimeLimit == null ? null : currentTourTimeLimit,
+        "memberCount": memberCount,
+        "maxMember": maxMember,
+        "remanningMember": remanningMember,
         "balance": balance,
         "active": active,
-        "competitionTours":
-            List<dynamic>.from(competitionTours.map((x) => x.toJson())),
-      };
-}
-
-class CompetitionTour {
-  CompetitionTour({
-    required this.id,
-    required this.competitionId,
-    required this.competitionToursId,
-    required this.name,
-    required this.timeLimit,
-    required this.order,
-    required this.active,
-  });
-
-  int id;
-  int competitionId;
-  int competitionToursId;
-  String name;
-  int timeLimit;
-  int order;
-  bool active;
-
-  factory CompetitionTour.fromJson(Map<String, dynamic> json) =>
-      CompetitionTour(
-        id: json["id"],
-        competitionId: json["competitionId"],
-        competitionToursId: json["competitionToursId"],
-        name: json["name"],
-        timeLimit: json["timeLimit"],
-        order: json["order"],
-        active: json["active"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "competitionId": competitionId,
-        "competitionToursId": competitionToursId,
-        "name": name,
-        "timeLimit": timeLimit,
-        "order": order,
-        "active": active,
+        "competitionTours": List<dynamic>.from(competitionTours.map((x) => x)),
       };
 }

@@ -22,7 +22,7 @@ var midNamepref;
 var lastNamepref;
 var phonepref;
 var passPref;
-bool isLogin = false;
+var isLogin;
 Future send_inf_login(email, password, context) async {
   homecontroller controller = Get.put(homecontroller());
   print("========information in function==========");
@@ -56,14 +56,7 @@ Future send_inf_login(email, password, context) async {
       print(tokenloginresult);
       print(dataloginresult);
       /************************************** */
-      print("IsLogin: ****");
-      SharedPreferences presIsLogin = await SharedPreferences.getInstance();
-      presIsLogin.setBool("isLogin", true);
-      isLogin = presIsLogin.getBool('isLogin')!;
-      print("******************************");
-      print(isLogin);
-      print("******************************");
-      controller.SaveUsersIsLogin(isLogin);
+
       /************************************** */
 
       print(dataloginresult["id"]);
@@ -126,6 +119,14 @@ Future send_inf_login(email, password, context) async {
       phonepref = presphone.getString('telephoneNumber');
       controller.SaveNumberPhone(phonepref);
 
+      print("IsLogin: ****");
+      SharedPreferences presIsLogin = await SharedPreferences.getInstance();
+      presIsLogin.setBool("isLogin", true);
+      isLogin = presIsLogin.getBool('isLogin')!;
+      print("******************************");
+      print(isLogin);
+      print("******************************");
+      // controller.SaveUsersIsLogin(isLogin);
       // Navigator.of(context).pushReplacementNamed("homePage");
       Navigator.pushAndRemoveUntil(
           context,

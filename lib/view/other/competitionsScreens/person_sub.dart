@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wst/control/homecontroller.dart';
+import 'package:wst/model/modeApi/allMemberCompitition.dart';
 import 'package:wst/utils/constant/color.dart';
 import 'package:wst/view/auth/widget/themeWst.dart';
 import 'package:wst/view/other/setting/profile/widgetRowForProfil.dart';
@@ -150,7 +151,7 @@ class personSub extends StatelessWidget {
                                                   ),
                                                   child: Center(
                                                     child: Text(
-                                                      "85",
+                                                      "${lengthMemberComp}",
                                                       style: TextStyle(
                                                           color:
                                                               MyColors.color3,
@@ -183,7 +184,7 @@ class personSub extends StatelessWidget {
                                                   ),
                                                   child: Center(
                                                     child: Text(
-                                                      "55",
+                                                      "${controller.saveamount}",
                                                       style: TextStyle(
                                                           color:
                                                               MyColors.color3,

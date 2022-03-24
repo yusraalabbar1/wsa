@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wst/model/modeApi/userBalance.dart';
 import 'package:wst/view/auth/widget/themeWst.dart';
 import 'package:wst/view/other/register1Screens/towButtonRegister1.dart';
 import 'package:wst/view/other/register1Screens/widgetRigerter1moy.dart';
@@ -44,7 +45,7 @@ class _register1Main extends State<register1Main> {
                           color: Colors.white,
                           fontSize: 20,
                           fontFamily: 'Almarai')),
-                  Text("200 ",
+                  Text(balanceForUser.toString(),
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 39,

@@ -39,7 +39,7 @@ Future addMemberCompitition(context, nick) async {
   print(c.isSuccess);
   print("==============================");
   if (response.statusCode == 200) {
-    if (c.isSuccess == "true") {
+    if (c.isSuccess == true) {
       AwesomeDialog(
               context: context,
               dialogType: DialogType.SUCCES,

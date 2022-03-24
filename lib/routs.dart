@@ -1,7 +1,9 @@
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wst/control/homecontroller.dart';
+import 'package:wst/model/modeApi/login_model.dart';
 import 'package:wst/thems.dart';
 import 'package:wst/view/auth/page/forgetPassword/cofirm_code.dart';
 import 'package:wst/view/auth/page/signup/complet_signup.dart';
@@ -48,7 +50,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: controller.saveUsersIsLogin == true ? homePage() : startPage(),
+      home: isLogin == true ? homePage() : startPage(),
       theme: CustomTheme.lightTheme,
       routes: {
         "startPage": ((context) => startPage()),

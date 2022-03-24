@@ -1,12 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wst/control/homecontroller.dart';
+import 'package:wst/model/modeApi/allMemberCompitition.dart';
 import 'package:wst/utils/constant/color.dart';
 import 'package:wst/view/auth/widget/themeWst.dart';
 import 'package:wst/view/other/widget/design_appbar.dart';
 
-class infoCompet extends StatelessWidget {
-  const infoCompet({Key? key}) : super(key: key);
+class infoCompet extends StatefulWidget {
+  infoCompet({Key? key}) : super(key: key);
+
+  @override
+  State<infoCompet> createState() => _infoCompetState();
+}
+
+class _infoCompetState extends State<infoCompet> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    allMemberCompitition();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +64,45 @@ class infoCompet extends StatelessWidget {
                                     color: MyColors.color3,
                                     fontSize: 14,
                                     fontFamily: 'Almarai'),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                "${controller.savecurrentTourName}",
+                                style: TextStyle(
+                                    color: MyColors.color3,
+                                    fontSize: 14,
+                                    fontFamily: 'Almarai'),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "الوقت المتبقي ",
+                                    style: TextStyle(
+                                        color: MyColors.color3,
+                                        fontSize: 14,
+                                        fontFamily: 'Almarai'),
+                                  ),
+                                  Text(
+                                    "${controller.savecurrentTourTimeLimit}",
+                                    style: TextStyle(
+                                        color: MyColors.color3,
+                                        fontSize: 12,
+                                        fontFamily: 'Almarai'),
+                                  ),
+                                  Text(
+                                    "دقيقة",
+                                    style: TextStyle(
+                                        color: MyColors.color3,
+                                        fontSize: 11,
+                                        fontFamily: 'Almarai'),
+                                  ),
+                                ],
                               ),
                               SizedBox(
                                 height: 5,

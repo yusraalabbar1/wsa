@@ -13,6 +13,7 @@ class completPersonSub extends StatelessWidget {
   Widget build(BuildContext context) {
     homecontroller controller = Get.put(homecontroller());
     var nameFake;
+
     return Scaffold(
         body: Stack(
       children: [

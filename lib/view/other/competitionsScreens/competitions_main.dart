@@ -89,9 +89,6 @@ class _competitionsMainState extends State<competitionsMain> {
       physics: ScrollPhysics(),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        //crossAxisSpacing: 10,
-        //mainAxisSpacing: 10,
-        // childAspectRatio: 2,
       ),
       itemCount: foundCompitition.length,
       itemBuilder: (BuildContext context, int index) {
@@ -102,6 +99,11 @@ class _competitionsMainState extends State<competitionsMain> {
               controller.SavemonyrComp(foundCompitition[index]['awardAmount']);
               controller.SavediscrpComp(foundCompitition[index]['description']);
               controller.SaveidComp(foundCompitition[index]['competitionsId']);
+              controller.Saveamount(foundCompitition[index]['amount']);
+              controller.SavecurrentTourName(
+                  foundCompitition[index]['currentTourName']);
+              controller.SavecurrentTourTimeLimit(
+                  foundCompitition[index]['currentTourTimeLimit']);
               Navigator.of(context).pushNamed("infoCompet");
             },
             child: Container(
@@ -136,7 +138,7 @@ class _competitionsMainState extends State<competitionsMain> {
                                         color: Colors.pink, width: 2)),
                                 onPressed: () {},
                                 child: Text(
-                                  "12",
+                                  "${foundCompitition[index]['remanningMember']}",
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 9,
@@ -159,6 +161,13 @@ class _competitionsMainState extends State<competitionsMain> {
                             ),
                             Text(
                               "${foundCompitition[index]['name']}",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 12,
+                                  fontFamily: 'Almarai'),
+                            ),
+                            Text(
+                              "${foundCompitition[index]['currentTourName']}",
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 12,
@@ -228,7 +237,7 @@ class _competitionsMainState extends State<competitionsMain> {
                                             color: Colors.pink, width: 2)),
                                     onPressed: () {},
                                     child: Text(
-                                      "55",
+                                      "${foundCompitition[index]['memberCount']}",
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 9,

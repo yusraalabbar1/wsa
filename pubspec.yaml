@@ -41,8 +41,12 @@ dependencies:
   dropdown_search: ^2.0.1
   easy_localization: ^3.0.0
   equatable: ^2.0.3
+  firebase_core: ^1.13.1
+  firebase_messaging: ^11.2.11
+  firebase_messaging_platform_interface: ^3.2.1
   flutter:
     sdk: flutter
+  flutter_local_notifications: ^9.4.0
   footer: ^0.0.4
   get: ^4.6.1
   http: ^0.13.4

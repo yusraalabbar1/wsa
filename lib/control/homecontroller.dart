@@ -33,10 +33,39 @@ class homecontroller extends GetxController {
   String saveLinkInsta = "";
   String saveLinktele = "";
   int saveidComp = 0;
+  var saveamount;
   List<Map> saveListNotifications = [];
   List<Map> saveMapCompitition = [];
-  String saveCodeMarkting = "";
+  var saveCodeMarkting;
+  var savecurrentTourName;
+  var savecurrentTourTimeLimit;
   var saveUsersIsLogin;
+  var saveMemberId;
+  /********************************************* */
+  void SaveMemberId(string) {
+    print("control value saveMemberId is:");
+    saveMemberId = string;
+    update();
+  }
+
+  void Saveamount(string) {
+    print("control value saveamount is:");
+    saveamount = string;
+    update();
+  }
+
+  void SavecurrentTourTimeLimit(string) {
+    print("control value saveUsersIsLogin is:");
+    savecurrentTourTimeLimit = string;
+    update();
+  }
+
+  void SavecurrentTourName(string) {
+    print("control value savecurrentTourName is:");
+    savecurrentTourName = string;
+    update();
+  }
+
   void SaveUsersIsLogin(string) {
     print("control value SaveUsersIsLogin is:");
     saveUsersIsLogin = string;

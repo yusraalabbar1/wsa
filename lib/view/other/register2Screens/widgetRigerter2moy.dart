@@ -3,12 +3,12 @@ import 'package:get/get.dart';
 import 'package:wst/control/homecontroller.dart';
 import 'package:wst/model/modeApi/userBalancLog.dart';
 
-Widget widgetRigerter1moy() {
+Widget widgetRigerter2moy() {
   return Padding(
       padding: const EdgeInsets.all(15.0),
       child: GetBuilder<homecontroller>(builder: (controller) {
         return (ListView.builder(
-            itemCount: register.length,
+            itemCount: recived.length,
             itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -20,7 +20,7 @@ Widget widgetRigerter1moy() {
                         // controller.SaveindexCopititon(index);
                         // Navigator.of(context).pushNamed("infoVote");
                       }),
-                      child: Text("${register[index]['message']}",
+                      child: Text("${recived[index]['message']}",
                           style: TextStyle(
                               color: Colors.white,
                               height: 1.5,

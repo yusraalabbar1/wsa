@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:wst/model/modeApi/commissionBalance.dart';
+import 'package:wst/model/modeApi/userBalance.dart';
 import 'package:wst/view/auth/widget/themeWst.dart';
 import 'package:wst/view/other/register1Screens/towButtonRegister1.dart';
 import 'package:wst/view/other/register1Screens/widgetRigerter1moy.dart';
+import 'package:wst/view/other/register2Screens/widgetRigerter2moy.dart';
 import 'package:wst/view/other/widget/design_appbar.dart';
 
 class register2Main extends StatefulWidget {
@@ -47,7 +50,7 @@ class _register2MainState extends State<register2Main> {
                                 color: Colors.white,
                                 fontSize: 20,
                                 fontFamily: 'Almarai')),
-                        Text("200 ",
+                        Text(balanceForUser.toString(),
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 39,
@@ -62,7 +65,7 @@ class _register2MainState extends State<register2Main> {
                                 color: Colors.white,
                                 fontSize: 20,
                                 fontFamily: 'Almarai')),
-                        Text("55 ",
+                        Text(balancecommission.toString(),
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 39,
@@ -81,7 +84,7 @@ class _register2MainState extends State<register2Main> {
                       end: Alignment.bottomCenter,
                       colors: [Color(0xff414D72), Color(0xff121E39)]),
                   borderRadius: BorderRadius.all(Radius.circular(20))),
-              child: widgetRigerter1moy(),
+              child: widgetRigerter2moy(),
             ),
           ],
         )
