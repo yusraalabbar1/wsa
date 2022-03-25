@@ -155,13 +155,8 @@ class completPersonSub extends StatelessWidget {
                                               color: MyColors.color1,
                                               width: 2)),
                                       onPressed: () {
-                                        Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                                builder:
-                                                    (BuildContext context) =>
-                                                        widgetOptions[2]));
-                                        // Navigator.of(context)
-                                        //     .pushNamed("homePage");
+                                        Navigator.of(context)
+                                            .pushNamed("homePage");
                                       },
                                       child: const Text(
                                         "العودة ",

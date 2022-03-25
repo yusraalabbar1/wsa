@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wst/control/homecontroller.dart';
+import 'package:wst/model/modeApi/allMemberCompitition.dart';
 import 'package:wst/model/modeApi/model_compitition.dart';
 import 'package:wst/utils/constant/color.dart';
 import 'package:wst/view/auth/widget/themeWst.dart';
-import 'package:wst/view/other/competitionsScreens/widget_page_compititoion.dart';
 import 'package:wst/view/other/competitionsScreens/widget_page_vote.dart';
 import 'package:wst/view/other/competitionsScreens/widget_tow_button_compitition.dart';
-import 'package:wst/view/other/competitionsScreens/widgetc_alItem_compitition.dart';
 import 'package:wst/view/other/widget/design_appbar.dart';
 
 class competitionsMain extends StatefulWidget {
@@ -20,6 +19,11 @@ class competitionsMain extends StatefulWidget {
 class _competitionsMainState extends State<competitionsMain> {
   homecontroller controller = Get.put(homecontroller());
   List filteredUsers = [];
+  @override
+  void initState() {
+    super.initState();
+  }
+
   _onSearchFieldChanged(String value) async {
     // to fill out next!
     var results;
@@ -76,6 +80,9 @@ class _competitionsMainState extends State<competitionsMain> {
                         ? pageCompit()
                         : pageVote(context));
                   }),
+                  SizedBox(
+                    height: 100,
+                  )
                 ],
               )
       ],
@@ -195,7 +202,7 @@ class _competitionsMainState extends State<competitionsMain> {
                               width: 31,
                               height: 31,
                             ),
-                            Text("${foundCompitition[index]['awardAmount']}",
+                            Text("${foundCompitition[index]['awardAmount']}\$",
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 9,
@@ -206,44 +213,66 @@ class _competitionsMainState extends State<competitionsMain> {
                                 SizedBox(
                                   width: 5,
                                 ),
-                                Container(
-                                  height: 22,
-                                  width: 44,
-                                  child: RaisedButton(
-                                    color: Colors.black,
-                                    shape: RoundedRectangleBorder(
-                                        side: BorderSide(
-                                            color: Colors.pink, width: 2)),
-                                    onPressed: () {},
-                                    child: Text(
-                                      "${foundCompitition[index]['amount']}",
+                                Column(
+                                  children: [
+                                    Container(
+                                      height: 22,
+                                      width: 44,
+                                      child: RaisedButton(
+                                        color: Colors.black,
+                                        shape: RoundedRectangleBorder(
+                                            side: BorderSide(
+                                                color: Colors.pink, width: 2)),
+                                        onPressed: () {},
+                                        child: Text(
+                                          "${foundCompitition[index]['amount']}\$",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 9,
+                                              fontFamily: 'Almarai'),
+                                        ),
+                                      ),
+                                    ),
+                                    Text(
+                                      "الإشتراك",
                                       style: TextStyle(
                                           color: Colors.white,
-                                          fontSize: 9,
+                                          fontSize: 7,
                                           fontFamily: 'Almarai'),
                                     ),
-                                  ),
+                                  ],
                                 ),
                                 SizedBox(
                                   width: 5,
                                 ),
-                                Container(
-                                  height: 22,
-                                  width: 44,
-                                  child: RaisedButton(
-                                    color: Colors.black,
-                                    shape: RoundedRectangleBorder(
-                                        side: BorderSide(
-                                            color: Colors.pink, width: 2)),
-                                    onPressed: () {},
-                                    child: Text(
-                                      "${foundCompitition[index]['memberCount']}",
+                                Column(
+                                  children: [
+                                    Container(
+                                      height: 22,
+                                      width: 44,
+                                      child: RaisedButton(
+                                        color: Colors.black,
+                                        shape: RoundedRectangleBorder(
+                                            side: BorderSide(
+                                                color: Colors.pink, width: 2)),
+                                        onPressed: () {},
+                                        child: Text(
+                                          "${foundCompitition[index]['memberCount']}",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 9,
+                                              fontFamily: 'Almarai'),
+                                        ),
+                                      ),
+                                    ),
+                                    Text(
+                                      "المتسابقين",
                                       style: TextStyle(
                                           color: Colors.white,
-                                          fontSize: 9,
+                                          fontSize: 7,
                                           fontFamily: 'Almarai'),
                                     ),
-                                  ),
+                                  ],
                                 ),
                                 SizedBox(
                                   width: 5,

@@ -14,11 +14,12 @@ class infoCompet extends StatefulWidget {
 }
 
 class _infoCompetState extends State<infoCompet> {
+  homecontroller controller = Get.put(homecontroller());
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    allMemberCompitition();
+    allMemberCompitition(controller.saveidComp);
   }
 
   @override

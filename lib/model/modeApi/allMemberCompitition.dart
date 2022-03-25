@@ -11,13 +11,15 @@ import 'package:wst/utils/constant/url.dart';
 import 'package:wst/view/other/agentsScreens/agents_main.dart';
 
 var lengthMemberComp;
-Future allMemberCompitition() async {
+List<Map> memberInCompt = [];
+var idVotMember;
+Future allMemberCompitition(id) async {
   homecontroller controller = Get.put(homecontroller());
   var headers = {'Authorization': "Bearer $tokenloginresult"};
   var request = http.Request(
       'GET',
       Uri.parse(
-          'http://212.24.108.54/wsa/api/Competitions/competitionMember/${controller.saveidComp}'));
+          'http://212.24.108.54/wsa/api/Competitions/competitionMember/$id'));
   request.body = '''''';
   request.headers.addAll(headers);
   http.StreamedResponse response = await request.send();
@@ -25,13 +27,17 @@ Future allMemberCompitition() async {
   getAllCompitionMember c =
       getAllCompitionMember.fromJson(jsonDecode(res.body));
   print("==============getAllCompitionMember================");
+  print(id);
   print(c.isSuccess);
   lengthMemberComp = c.data.length;
+  print(lengthMemberComp);
+  for (var i = 0; i < lengthMemberComp; i++) {
+    memberInCompt.add(c.data[i].toJson());
+  }
+  print(memberInCompt);
+  controller.SavememberInCompt(memberInCompt);
   print("==============================");
   if (response.statusCode == 200) {
-    if (c.isSuccess == "true") {
-      lengthMemberComp = c.data.length;
-    } else {}
   } else {
     print(response.reasonPhrase);
   }

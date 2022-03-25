@@ -1,11 +1,14 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wst/control/homecontroller.dart';
+import 'package:wst/model/modeApi/addCompetitionVote.dart';
+import 'package:wst/model/modeApi/allMemberCompitition.dart';
+import 'package:wst/model/modeApi/login_model.dart';
 import 'package:wst/model/modeApi/model_compitition.dart';
 import 'package:wst/utils/constant/color.dart';
 import 'package:wst/view/auth/widget/themeWst.dart';
-import 'package:wst/view/other/competitionsScreens/widget_all_person_cont.dart';
-import 'package:wst/view/other/competitionsScreens/widgetc_alItem_compitition.dart';
 import 'package:wst/view/other/widget/design_appbar.dart';
 
 class infoVote extends StatefulWidget {
@@ -17,6 +20,13 @@ class infoVote extends StatefulWidget {
 
 class _infoVoteState extends State<infoVote> {
   homecontroller controller = Get.put(homecontroller());
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    // memberInCompt = null;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -94,7 +104,16 @@ class _infoVoteState extends State<infoVote> {
                 ]),
               ),
             ),
-            widgetConst(context),
+            GetBuilder<homecontroller>(builder: (controller) {
+              return (controller.savememberInCompt == null
+                  ? Text("loading..")
+                  : widgetConst(
+                      context,
+                      MyCompitition[controller.indexCopititon]
+                          ["competitionsId"]));
+            }),
+
+            // widgetConst(context),
             Padding(
               padding: const EdgeInsets.all(19.0),
               child: Text(
@@ -199,5 +218,151 @@ class _infoVoteState extends State<infoVote> {
         )
       ],
     ));
+  }
+
+  Widget widgetConst(context, id) {
+    return Column(
+      children: [
+        Container(
+          margin: EdgeInsets.only(left: 20, right: 20, bottom: 10),
+          height: 35,
+          child: Center(
+            child: TextFormField(
+              decoration: InputDecoration(
+                  contentPadding: EdgeInsets.all(15.0),
+                  prefixIcon: Icon(
+                    Icons.search,
+                    color: MyColors.color1,
+                  ),
+                  hintText: 'ابحث عن متسابق',
+                  hintStyle: TextStyle(fontSize: 10, color: MyColors.color3)),
+              onChanged: (string) {},
+            ),
+          ),
+        ),
+        Container(
+          margin: EdgeInsets.only(left: 20, right: 20),
+          // color: Colors.white,
+          height: 183,
+          width: MediaQuery.of(context).size.width,
+
+          child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: memberInCompt.length,
+              itemBuilder: (context, index) {
+                return Stack(
+                  children: [
+                    Column(
+                      children: <Widget>[
+                        Container(
+                          height: 30,
+                          width: 120,
+                          color: Colors.transparent,
+                        ),
+                        Expanded(
+                          child: Container(
+                            height: 161,
+                            width: 108,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(40),
+                                bottomLeft: Radius.circular(40),
+                              ),
+                              color: Colors.primaries[
+                                      Random().nextInt(Colors.primaries.length)]
+                                  .withOpacity(0.5),
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "${controller.savememberInCompt[index]['nickName']}",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 12,
+                                      fontFamily: 'Almarai'),
+                                ),
+                                Text(
+                                  "رقم",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 12,
+                                      fontFamily: 'Almarai'),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+                                  height: 2,
+                                  decoration: BoxDecoration(
+                                      gradient: LinearGradient(
+                                          begin: Alignment.centerLeft,
+                                          end: Alignment.centerRight,
+                                          colors: [
+                                            Color.fromARGB(255, 83, 101, 143),
+                                            Color(0xff414D72)
+                                          ]),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(20))),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  "(" +
+                                      "${controller.savememberInCompt[index]['memberNo']}" +
+                                      ")",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 21,
+                                      fontFamily: 'Almarai'),
+                                ),
+                                Container(
+                                  height: 30,
+                                  width: 30,
+                                  child: RaisedButton(
+                                    onPressed: () {
+                                      addCompitationVote(
+                                          id,
+                                          controller.savememberInCompt[index]
+                                              ['id'],
+                                          idSaveprefpref,
+                                          context);
+                                    },
+                                    child: Text("vote"),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                    Positioned(
+                      left: 30,
+                      top: 0.0,
+                      // (background container size) - (circle height / 2)
+                      child: Center(
+                        child: Container(
+                          child: InkWell(
+                            child: Image.asset(
+                              "assets/images/1.png",
+                              height: 56.0,
+                              width: 56.0,
+                            ),
+                          ),
+                          height: 56.0,
+                          width: 56.0,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle, color: Color(0xff1C2948)),
+                        ),
+                      ),
+                    )
+                  ],
+                );
+              }),
+        )
+      ],
+    );
   }
 }

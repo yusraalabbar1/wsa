@@ -21,7 +21,6 @@ import 'package:wst/view/other/agentsScreens/info_agent.dart';
 import 'package:wst/view/other/competitionsScreens/competitions_main.dart';
 import 'package:wst/view/other/competitionsScreens/complet_person_sub.dart';
 import 'package:wst/view/other/competitionsScreens/info_compit.dart';
-import 'package:wst/view/other/competitionsScreens/widget_page_compititoion.dart';
 import 'package:wst/view/other/competitionsScreens/person_sub.dart';
 import 'package:wst/view/other/homeMainScreens/recive/chois_receive.dart';
 import 'package:wst/view/other/homeMainScreens/send/complet_send_money.dart';

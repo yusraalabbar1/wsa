@@ -36,12 +36,20 @@ class homecontroller extends GetxController {
   var saveamount;
   List<Map> saveListNotifications = [];
   List<Map> saveMapCompitition = [];
+  List<Map> savememberInCompt = [];
+
   var saveCodeMarkting;
   var savecurrentTourName;
   var savecurrentTourTimeLimit;
   var saveUsersIsLogin;
   var saveMemberId;
   /********************************************* */
+  void SavememberInCompt(string) {
+    print("control value savememberInCompt is:");
+    savememberInCompt = string;
+    update();
+  }
+
   void SaveMemberId(string) {
     print("control value saveMemberId is:");
     saveMemberId = string;

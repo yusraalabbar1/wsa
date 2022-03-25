@@ -180,7 +180,9 @@ class _loginState extends State<login> {
                           onSaved: (string) {
                             print("on saved");
                             TelephoneNumber = string;
-                            controller.SaveNumberPhone(string);
+                            controller.SaveNumberPhone("00" +
+                                "${controller.saveCountryCode}" +
+                                string!);
                           },
                           // onChanged: (value) {
                           //    controller.SaveNumberPhone(int.parse(value));

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wst/control/homecontroller.dart';
 import 'package:wst/model/modeApi/model_compitition.dart';
-import 'package:wst/view/other/competitionsScreens/widgetc_alItem_compitition.dart';
 
 Widget widgetgallary(context) {
   return GetBuilder<homecontroller>(builder: (controller) {
