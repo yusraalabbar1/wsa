@@ -7,6 +7,7 @@ import 'package:wst/control/homecontroller.dart';
 import 'package:wst/model/modeApi/getcountery.dart';
 import 'package:wst/model/modeApi/verify_model_signup.dart';
 import 'package:wst/model/modeApi/send_inf_signup.dart';
+import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 
 class PinCodeVerificationScreen extends StatefulWidget {
   @override
@@ -14,7 +15,8 @@ class PinCodeVerificationScreen extends StatefulWidget {
       _PinCodeVerificationScreenState();
 }
 
-class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
+class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen>
+    with TickerProviderStateMixin {
   homecontroller controller = Get.put(homecontroller());
   TextEditingController textEditingController = TextEditingController();
   // ..text = "123456";
@@ -26,14 +28,27 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
   String currentText = "";
   final formKey = GlobalKey<FormState>();
 
+  late AnimationController _controller;
+  int levelClock = 180;
+
   @override
   void initState() {
     errorController = StreamController<ErrorAnimationType>();
     super.initState();
+
+    _controller = AnimationController(
+        vsync: this,
+        duration: Duration(
+            seconds:
+                levelClock) // gameData.levelClock is a user entered number elsewhere in the applciation
+        );
+
+    _controller.forward();
   }
 
   @override
   void dispose() {
+    _controller.dispose();
     errorController!.close();
 
     super.dispose();
@@ -87,8 +102,7 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
                         text: "Enter the code sent to ",
                         children: [
                           TextSpan(
-                              text:
-                                  "+${controller.saveCountryCode} ${controller.saveNumberPhone}",
+                              text: " ${controller.saveNumberPhone}",
                               style: TextStyle(
                                   color: Color.fromARGB(255, 23, 40, 78),
                                   fontWeight: FontWeight.bold,
@@ -184,9 +198,25 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
                       fontWeight: FontWeight.w400),
                 ),
               ),
-              SizedBox(
-                height: 20,
-              ),
+              Padding(
+                  padding: const EdgeInsets.only(right: 40),
+                  child: Row(
+                    children: [
+                      Text(
+                        "الوقت المتبقي: ",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 12,
+                        ),
+                      ),
+                      Countdown(
+                        animation: StepTween(
+                          begin: levelClock, // THIS IS A USER ENTERED NUMBER
+                          end: 0,
+                        ).animate(_controller),
+                      ),
+                    ],
+                  )),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -225,6 +255,7 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
                         setState(
                           () {
                             hasError = false;
+
                             // snackBar("OTP Verified!!");
                             print(userId);
                             verifyModel(userId, currentText, context);
@@ -275,7 +306,7 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
                     child: Text("Set Text"),
                     onPressed: () {
                       setState(() {
-                        textEditingController.text = "0000";
+                        textEditingController.text = "";
                       });
                     },
                   )),
@@ -284,6 +315,34 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class Countdown extends AnimatedWidget {
+  Countdown({Key? key, required this.animation})
+      : super(key: key, listenable: animation);
+  Animation<int> animation;
+
+  @override
+  build(BuildContext context) {
+    Duration clockTimer = Duration(seconds: animation.value);
+
+    String timerText =
+        '${clockTimer.inMinutes.remainder(60).toString()}:${clockTimer.inSeconds.remainder(60).toString().padLeft(2, '0')}';
+
+    print('animation.value  ${animation.value} ');
+    print('inMinutes ${clockTimer.inMinutes.toString()}');
+    print('inSeconds ${clockTimer.inSeconds.toString()}');
+    print(
+        'inSeconds.remainder ${clockTimer.inSeconds.remainder(60).toString()}');
+
+    return Text(
+      "$timerText",
+      style: TextStyle(
+        fontSize: 20,
+        color: Colors.red,
       ),
     );
   }

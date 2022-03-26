@@ -227,6 +227,7 @@ class personSub extends StatelessWidget {
                                                   formstate.currentState;
                                               if (formdata!.validate()) {
                                                 formdata.save();
+                                                //////////////////////////
                                                 addMemberCompitition(context,
                                                     controller.nameFake);
                                               } else {

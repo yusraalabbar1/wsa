@@ -50,6 +50,7 @@ class Datum {
     required this.remanningMember,
     required this.balance,
     required this.active,
+    required this.isFinish,
     required this.competitionTours,
   });
 
@@ -68,6 +69,7 @@ class Datum {
   int remanningMember;
   double balance;
   bool active;
+  bool isFinish;
   List<dynamic> competitionTours;
 
   factory Datum.fromJson(Map<String, dynamic> json) => Datum(
@@ -90,6 +92,7 @@ class Datum {
         remanningMember: json["remanningMember"],
         balance: json["balance"],
         active: json["active"],
+        isFinish: json["isFinish"],
         competitionTours:
             List<dynamic>.from(json["competitionTours"].map((x) => x)),
       );
@@ -111,6 +114,7 @@ class Datum {
         "remanningMember": remanningMember,
         "balance": balance,
         "active": active,
+        "isFinish": isFinish,
         "competitionTours": List<dynamic>.from(competitionTours.map((x) => x)),
       };
 }

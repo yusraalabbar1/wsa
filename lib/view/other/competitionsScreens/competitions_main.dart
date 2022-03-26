@@ -74,7 +74,6 @@ class _competitionsMainState extends State<competitionsMain> {
                       ),
                     ),
                   ),
-                  //pageCompit(),
                   GetBuilder<homecontroller>(builder: (controller) {
                     return (controller.i == 0
                         ? pageCompit()
@@ -107,6 +106,7 @@ class _competitionsMainState extends State<competitionsMain> {
               controller.SavediscrpComp(foundCompitition[index]['description']);
               controller.SaveidComp(foundCompitition[index]['competitionsId']);
               controller.Saveamount(foundCompitition[index]['amount']);
+              controller.SaveIsFinishComp(foundCompitition[index]['isFinish']);
               controller.SavecurrentTourName(
                   foundCompitition[index]['currentTourName']);
               controller.SavecurrentTourTimeLimit(

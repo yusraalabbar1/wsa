@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:wst/control/homecontroller.dart';
+import 'package:wst/model/modeApi/allMemberCompitition.dart';
 import 'package:wst/model/modeApi/api_all_agents.dart';
+import 'package:wst/model/modeApi/getWinner.dart';
 import 'package:wst/view/auth/widget/themeWst.dart';
 import 'package:wst/view/other/homeMainScreens/widget_balance.dart';
 import 'package:wst/view/other/homeMainScreens/widget_gallary.dart';
@@ -17,12 +21,14 @@ class homeMain extends StatefulWidget {
 }
 
 class _homeMainState extends State<homeMain> {
+  homecontroller controller = Get.put(homecontroller());
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     allAgent = [];
     getAllAgents();
+    getWinner();
   }
 
   @override

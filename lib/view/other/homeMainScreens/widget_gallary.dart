@@ -47,7 +47,7 @@ Widget widgetgallary(context) {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
-                                        "${controller.saveMapCompitition[index]['name']}",
+                                        "${MyCompitition[controller.indexCopititon]["name"]}",
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontSize: 14,
@@ -74,7 +74,7 @@ Widget widgetgallary(context) {
                                         height: 5,
                                       ),
                                       Text(
-                                        "${controller.saveMapCompitition[index]['awardAmount']}",
+                                        "${MyCompitition[controller.indexCopititon]['awardAmount']}",
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontSize: 14,

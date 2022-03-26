@@ -37,7 +37,7 @@ class detailsWinner extends StatelessWidget {
                       Text(
                           "الرابحين" +
                               "/" +
-                              " ${winner[controller.indexWinner]['name']}",
+                              " ${controller.saveListWinner[controller.indexWinner]['fullName']}",
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 15,
@@ -56,7 +56,7 @@ class detailsWinner extends StatelessWidget {
                     child: Container(
                       alignment: Alignment.topRight,
                       child: Image.asset(
-                        "${winner[controller.indexWinner]['image']}",
+                        "assets/images/1.png",
                         height: 75,
                         width: 75,
                       ),
@@ -69,7 +69,7 @@ class detailsWinner extends StatelessWidget {
                           Container(
                             alignment: Alignment.topRight,
                             child: Text(
-                                "${winner[controller.indexWinner]['name']}",
+                                "${controller.saveListWinner[controller.indexWinner]['fullName']}",
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 17,
@@ -81,7 +81,7 @@ class detailsWinner extends StatelessWidget {
                           Row(
                             children: [
                               Image.asset(
-                                "${winner[controller.indexWinner]['flage']}",
+                                "assets/images/Syriaicon.png",
                                 height: 20,
                                 width: 20,
                               ),
@@ -89,7 +89,7 @@ class detailsWinner extends StatelessWidget {
                                 width: 5,
                               ),
                               Text(
-                                  "${winner[controller.indexWinner]['country']}",
+                                  "${controller.saveListWinner[controller.indexWinner]['countryDescAr']}",
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 12,
@@ -105,11 +105,12 @@ class detailsWinner extends StatelessWidget {
                         child: Column(
                           children: [
                             Image.asset(
-                              "${winner[controller.indexWinner]['cup']}",
+                              "assets/images/trophy.png",
                               height: 41,
                               width: 41,
                             ),
-                            Text("${winner[controller.indexWinner]['mony']}",
+                            Text(
+                                "${controller.saveListWinner[controller.indexWinner]['awardAmount']}",
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 17,
@@ -127,10 +128,10 @@ class detailsWinner extends StatelessWidget {
                       color: Colors.white,
                       fontSize: 17,
                       fontFamily: 'Almarai')),
-            ),
+            ), /*
             Padding(
               padding: const EdgeInsets.only(right: 20, left: 20),
-              child: Text("${winner[controller.indexWinner]['descrition']}",
+              child: Text("${controller.saveListWinner[controller.indexWinner]['descrition']}",
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 13,
@@ -146,7 +147,7 @@ class detailsWinner extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(right: 20, left: 20),
-              child: Text("${winner[controller.indexWinner]['descrition']}",
+              child: Text("${controller.saveListWinner[controller.indexWinner]['descrition']}",
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 13,
@@ -162,12 +163,12 @@ class detailsWinner extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(right: 20, left: 20),
-              child: Text("${winner[controller.indexWinner]['descrition']}",
+              child: Text("${controller.saveListWinner[controller.indexWinner]['descrition']}",
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 13,
                       fontFamily: 'Almarai')),
-            ),
+            ),*/
           ],
         )
       ],

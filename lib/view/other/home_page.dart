@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wst/control/homecontroller.dart';
 import 'package:wst/model/modeApi/GetNotification.dart';
+import 'package:wst/model/modeApi/allMemberCompitition.dart';
 import 'package:wst/model/modeApi/commissionBalance.dart';
 import 'package:wst/model/modeApi/common_questions.dart';
 import 'package:wst/model/modeApi/get_all_social.dart';
@@ -27,12 +28,13 @@ class homePage extends StatefulWidget {
   State<homePage> createState() => _homePageState();
 }
 
+homecontroller controller = Get.put(homecontroller());
 final List<Widget> widgetOptions = <Widget>[
   agentsMain(),
   competitionsMain(),
   homeMain(),
   register1Main(),
-  register2Main(),
+  // register2Main(),
 ];
 
 class _homePageState extends State<homePage> {
@@ -50,6 +52,7 @@ class _homePageState extends State<homePage> {
     userBalanc();
     userBalancLog();
     comissionBalanc();
+    // allMemberCompitition(controller.saveidComp);
   }
 
 ///////////////////////////////////
@@ -98,13 +101,13 @@ class _homePageState extends State<homePage> {
               height: 28,
             ),
           ),
-          InkWell(
-            child: Image.asset(
-              "assets/images/register2.png",
-              width: 28,
-              height: 28,
-            ),
-          ),
+          // InkWell(
+          //   child: Image.asset(
+          //     "assets/images/register2.png",
+          //     width: 28,
+          //     height: 28,
+          //   ),
+          // ),
           InkWell(
             child: Image.asset(
               "assets/images/register1.png",

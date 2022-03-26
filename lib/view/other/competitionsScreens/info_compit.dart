@@ -60,6 +60,13 @@ class _infoCompetState extends State<infoCompet> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
+                                "${controller.saveIsFinishComp}",
+                                style: TextStyle(
+                                    color: MyColors.color3,
+                                    fontSize: 14,
+                                    fontFamily: 'Almarai'),
+                              ),
+                              Text(
                                 "${controller.nameComp}",
                                 style: TextStyle(
                                     color: MyColors.color3,
