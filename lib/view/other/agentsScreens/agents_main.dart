@@ -97,6 +97,7 @@ class _agentsMainState extends State<agentsMain> {
                               onTap: () {
                                 controller.IndexAgent(index);
                                 controller.i_agent = 1;
+                                imagesAgents = [];
                                 agentDetails(foundAll[index]['id']);
                                 //Navigator.of(context).pushNamed("infoAgent");
                               },

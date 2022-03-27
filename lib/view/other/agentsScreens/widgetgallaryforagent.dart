@@ -21,7 +21,7 @@ Widget widgetgallaryagent(context, i) {
                   child: Stack(children: [
                     Container(
                       width: 96,
-                      height: 62,
+                      height: 123,
                       decoration: BoxDecoration(
                           image: DecorationImage(
                               image: NetworkImage(

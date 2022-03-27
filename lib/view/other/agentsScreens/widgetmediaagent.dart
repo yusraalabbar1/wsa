@@ -27,9 +27,6 @@ Widget widgetmediaagent(context, i) {
               padding: const EdgeInsets.only(left: 19, right: 19),
               child: Row(
                 children: [
-                  SizedBox(
-                    width: 5,
-                  ),
                   Expanded(
                     child: RaisedButton(
                       color: Colors

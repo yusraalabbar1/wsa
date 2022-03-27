@@ -59,10 +59,10 @@ Widget widgetBalance(context) {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             buttonsend("ارسال", Icons.call_made, context),
-            SizedBox(
-              height: 20,
-            ),
-            buttonrec("استقبال", Icons.call_received, context),
+            // SizedBox(
+            //   height: 20,
+            // ),
+            //buttonrec("استقبال", Icons.call_received, context),
           ],
         )),
       ],

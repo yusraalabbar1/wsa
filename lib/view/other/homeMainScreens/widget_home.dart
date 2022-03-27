@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 Container buttonsend(text, icon, context) {
   return Container(
     width: 127,
-    height: 37,
+    height: 50,
     child: RaisedButton.icon(
       onPressed: () {
         print('Button Clicked.');

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -35,6 +37,7 @@ Widget part2Agent(context) {
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 13,
+                      fontWeight: FontWeight.bold,
                       fontFamily: 'Almarai')),
             ],
           ),
@@ -55,15 +58,19 @@ Widget part2Agent(context) {
       ),
       widgetgallaryagent(context, controller.indexAgent),
       Padding(
-        padding: const EdgeInsets.all(19.0),
+        padding:
+            const EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 10),
         child: Text(
-          "${allAgent[controller.indexAgent]['name']}",
+          "${allAgent[controller.indexAgent]['name']} :",
           style: TextStyle(
-              color: Colors.white, fontSize: 17, fontFamily: 'Almarai'),
+              color: Colors.white,
+              fontSize: 17,
+              fontFamily: 'Almarai',
+              fontWeight: FontWeight.bold),
         ),
       ),
       Padding(
-        padding: const EdgeInsets.only(left: 23, right: 23, top: 5),
+        padding: const EdgeInsets.only(left: 30, right: 30, top: 5),
         child: Text(
           "${allAgent[controller.indexAgent]['description']}",
           style: TextStyle(
@@ -71,7 +78,7 @@ Widget part2Agent(context) {
         ),
       ),
       Padding(
-        padding: const EdgeInsets.only(left: 23, right: 23, top: 5),
+        padding: const EdgeInsets.only(left: 30, right: 30, top: 5),
         child: Text(
           "${allAgent[controller.indexAgent]['locationDesc']}",
           style: TextStyle(
@@ -79,11 +86,41 @@ Widget part2Agent(context) {
         ),
       ),
       Padding(
-        padding: const EdgeInsets.all(19.0),
+        padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
         child: Text(
-          "وسائل التواصل الإجتماعي",
+          "شحن رصيد :",
           style: TextStyle(
-              color: Colors.white, fontSize: 17, fontFamily: 'Almarai'),
+              color: Colors.white,
+              fontSize: 17,
+              fontFamily: 'Almarai',
+              fontWeight: FontWeight.bold),
+        ),
+      ),
+      // ignore: deprecated_member_use
+      Padding(
+        padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+        child: RaisedButton(
+          color: MyColors.color1,
+          elevation: 10,
+          splashColor: Colors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(25),
+          ),
+          onPressed: () {},
+          child: Text("اشحن الان",
+              style: TextStyle(
+                  color: Colors.white, fontSize: 11, fontFamily: 'Almarai')),
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+        child: Text(
+          "وسائل التواصل الإجتماعي :",
+          style: TextStyle(
+              color: Colors.white,
+              fontSize: 17,
+              fontFamily: 'Almarai',
+              fontWeight: FontWeight.bold),
         ),
       ),
       widgetmediaagent(context, controller.indexAgent),
