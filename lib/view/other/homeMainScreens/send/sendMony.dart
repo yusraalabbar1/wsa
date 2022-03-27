@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wst/control/homecontroller.dart';
+import 'package:wst/model/modeApi/rechargeBalanceFromUserToUser.dart';
+import 'package:wst/model/modeApi/userBalance.dart';
 import 'package:wst/utils/constant/color.dart';
 
 class sendMony extends StatefulWidget {
@@ -12,11 +14,11 @@ class sendMony extends StatefulWidget {
 
 class _sendMonyState extends State<sendMony> {
   final formstate = GlobalKey<FormState>();
-
+  var uniqCode;
+  var amountSend;
   homecontroller controller = Get.put(homecontroller());
   @override
   Widget build(BuildContext context) {
-    var nameFake;
     return Scaffold(
         body: Stack(
       children: [
@@ -29,7 +31,7 @@ class _sendMonyState extends State<sendMony> {
           child: CustomScrollView(
             slivers: [
               SliverAppBar(
-                expandedHeight: 350,
+                expandedHeight: 100,
                 elevation: 0.0,
                 backgroundColor: Colors.transparent,
               ),
@@ -69,28 +71,31 @@ class _sendMonyState extends State<sendMony> {
                                         fit: BoxFit.cover,
                                       ),
                                     ),
-                                    child: Column(
-                                      children: [
-                                        SizedBox(
-                                          height: 50,
-                                        ),
-                                        Container(
-                                          margin: EdgeInsets.only(
-                                              left: 30, right: 30),
-                                          alignment: Alignment.centerRight,
-                                          child: Text(
-                                            "المبلغ الذي تريد تحويله",
-                                            style: TextStyle(
-                                                color: MyColors.color3,
-                                                fontSize: 14,
-                                                fontFamily: 'Almarai'),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(30.0),
-                                          child: Form(
-                                            key: formstate,
-                                            child: GetBuilder<homecontroller>(
+                                    child: Form(
+                                      key: formstate,
+                                      child: Container(
+                                        margin: EdgeInsets.all(20),
+                                        child: Column(
+                                          children: [
+                                            SizedBox(
+                                              height: 50,
+                                            ),
+                                            Container(
+                                              margin: EdgeInsets.only(
+                                                  left: 30, right: 30),
+                                              alignment: Alignment.centerRight,
+                                              child: Text(
+                                                "المبلغ الذي تريد تحويله",
+                                                style: TextStyle(
+                                                    color: MyColors.color3,
+                                                    fontSize: 14,
+                                                    fontFamily: 'Almarai'),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 10,
+                                            ),
+                                            GetBuilder<homecontroller>(
                                                 builder: (controller) {
                                               return (TextFormField(
                                                 keyboardType:
@@ -108,80 +113,138 @@ class _sendMonyState extends State<sendMony> {
                                                 },
                                                 decoration:
                                                     const InputDecoration(
-                                                  hintText: '',
+                                                  hintText: '00',
                                                 ),
                                                 onSaved: (string) {
-                                                  nameFake = string;
-                                                  controller.SavenameFake(
-                                                      string);
+                                                  amountSend = string;
                                                 },
                                               ));
                                             }),
-                                          ),
-                                        ),
-                                        Container(
-                                          margin: EdgeInsets.only(
-                                              left: 30, right: 30),
-                                          child: Row(
-                                            children: [
-                                              Text("رصيدك الحالي",
-                                                  style: TextStyle(
-                                                      color: MyColors.color3,
-                                                      fontSize: 14,
-                                                      fontFamily: 'Almarai')),
-                                              Text("370 ",
-                                                  style: TextStyle(
-                                                      color: MyColors.color3,
-                                                      fontSize: 14,
-                                                      fontFamily: 'Almarai')),
-                                              Text(" دولار",
-                                                  style: TextStyle(
-                                                      color: MyColors.color3,
-                                                      fontSize: 14,
-                                                      fontFamily: 'Almarai'))
-                                            ],
-                                          ),
-                                        ),
-                                        Container(
-                                          width: double.infinity,
-                                          height: 60,
-                                          margin: const EdgeInsets.only(
-                                              bottom: 10,
-                                              right: 30,
-                                              left: 30,
-                                              top: 20),
-                                          child: RaisedButton(
-                                            color: MyColors.color1,
-                                            elevation: 10,
-                                            splashColor: MyColors.color3,
-                                            shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(25),
-                                                side: BorderSide(
-                                                    color: MyColors.color1,
-                                                    width: 2)),
-                                            onPressed: () {
-                                              var formdata =
-                                                  formstate.currentState;
-                                              if (formdata!.validate()) {
-                                                formdata.save();
-                                                Navigator.of(context).pushNamed(
-                                                    "CompletsendMoney");
-                                              } else {
-                                                print(
-                                                    "not validddddddddddddddd");
-                                              }
-                                            },
-                                            child: const Text(
-                                              "استمرار",
-                                              style: TextStyle(
-                                                  fontSize: 13,
-                                                  color: MyColors.color3,
-                                                  fontFamily: 'Almarai'),
+                                            SizedBox(
+                                              height: 20,
                                             ),
-                                          ),
+                                            Container(
+                                              margin: EdgeInsets.only(
+                                                  left: 30, right: 30),
+                                              alignment: Alignment.centerRight,
+                                              child: Text(
+                                                "unique code المستقبل",
+                                                style: TextStyle(
+                                                    color: MyColors.color3,
+                                                    fontSize: 14,
+                                                    fontFamily: 'Almarai'),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 10,
+                                            ),
+                                            GetBuilder<homecontroller>(
+                                                builder: (controller) {
+                                              return (TextFormField(
+                                                keyboardType:
+                                                    TextInputType.text,
+                                                style: const TextStyle(
+                                                    color: MyColors.color3),
+                                                validator: (text) {
+                                                  if (text!.length > 40) {
+                                                    return "can not enter bigest than 40";
+                                                  }
+                                                  if (text.length < 1) {
+                                                    return "can not enter less than 1";
+                                                  }
+                                                  return null;
+                                                },
+                                                decoration:
+                                                    const InputDecoration(
+                                                  hintText: 'GDSJ20X',
+                                                ),
+                                                onSaved: (string) {
+                                                  uniqCode = string;
+                                                },
+                                              ));
+                                            }),
+                                            SizedBox(
+                                              height: 20,
+                                            ),
+                                            Container(
+                                              margin: EdgeInsets.only(
+                                                  left: 30, right: 30),
+                                              child: Row(
+                                                children: [
+                                                  Text("رصيدك الحالي",
+                                                      style: TextStyle(
+                                                          color:
+                                                              MyColors.color3,
+                                                          fontSize: 14,
+                                                          fontFamily:
+                                                              'Almarai')),
+                                                  Text(
+                                                      balanceForUser.toString(),
+                                                      style: TextStyle(
+                                                          color:
+                                                              MyColors.color3,
+                                                          fontSize: 14,
+                                                          fontFamily:
+                                                              'Almarai')),
+                                                  Text(" دولار",
+                                                      style: TextStyle(
+                                                          color:
+                                                              MyColors.color3,
+                                                          fontSize: 14,
+                                                          fontFamily:
+                                                              'Almarai'))
+                                                ],
+                                              ),
+                                            ),
+                                            Container(
+                                              width: double.infinity,
+                                              height: 60,
+                                              margin: const EdgeInsets.only(
+                                                  bottom: 10,
+                                                  right: 30,
+                                                  left: 30,
+                                                  top: 20),
+                                              child: RaisedButton(
+                                                color: MyColors.color1,
+                                                elevation: 10,
+                                                splashColor: MyColors.color3,
+                                                shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            25),
+                                                    side: BorderSide(
+                                                        color: MyColors.color1,
+                                                        width: 2)),
+                                                onPressed: () {
+                                                  var formdata =
+                                                      formstate.currentState;
+                                                  if (formdata!.validate()) {
+                                                    formdata.save();
+                                                    rechargeBalanceFromUserToUser(
+                                                        context,
+                                                        uniqCode,
+                                                        double.parse(
+                                                            amountSend));
+                                                    // Navigator.of(context)
+                                                    //     .pushNamed(
+                                                    //         "CompletsendMoney");
+                                                  } else {
+                                                    print(
+                                                        "not validddddddddddddddd");
+                                                  }
+                                                },
+                                                child: const Text(
+                                                  "استمرار",
+                                                  style: TextStyle(
+                                                      fontSize: 13,
+                                                      color: MyColors.color3,
+                                                      fontFamily: 'Almarai'),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
                                         ),
-                                      ],
+                                      ),
                                     ),
                                   ),
                                 ],
@@ -225,7 +288,7 @@ class _sendMonyState extends State<sendMony> {
 
 Widget buildSliverAppBar() {
   return SliverAppBar(
-    expandedHeight: 350,
+    expandedHeight: 10,
     elevation: 0.0,
     flexibleSpace: FlexibleSpaceBar(
       centerTitle: true,

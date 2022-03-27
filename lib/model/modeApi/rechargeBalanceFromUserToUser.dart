@@ -3,31 +3,25 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:wst/control/homecontroller.dart';
 import 'package:wst/model/modeApi/login_model.dart';
-import 'package:wst/model/modelJson/modeladdCompitationVote.dart';
+import 'package:wst/model/modelJson/rechargeBalanceFromUserToUserModel.dart';
 import 'package:wst/utils/constant/color.dart';
 
-Future addCompitationVote(idComp, memberId, userId, context) async {
-  print(idComp);
-  print(memberId);
-  print(userId);
+Future rechargeBalanceFromUserToUser(context, unique, balanc) async {
   var headers = {
     'Authorization': "Bearer $tokenloginresult",
     'Content-Type': 'application/json'
   };
   var request = http.Request(
-      'POST',
-      Uri.parse(
-          'http://212.24.108.54/wsa/api/Competitions/addCompetitionVote'));
+      'POST', Uri.parse('http://212.24.108.54/wsa/api/user/rechargeToUser'));
   request.body = json.encode(
-      {"CompetitionId": idComp, "MemberId": memberId, "UserId": userId});
+      {"UserId": idSaveprefpref, "ToUniqueCode": unique, "Balance": balanc});
   request.headers.addAll(headers);
 
   http.StreamedResponse response = await request.send();
   var res = await http.Response.fromStream(response);
-  addCompitationVoteModel c =
-      addCompitationVoteModel.fromJson(jsonDecode(res.body));
+  rechargeBalanceFromUserToUserModel c =
+      rechargeBalanceFromUserToUserModel.fromJson(jsonDecode(res.body));
   print(c.isSuccess);
   print(c.message);
   if (response.statusCode == 200) {
@@ -37,7 +31,7 @@ Future addCompitationVote(idComp, memberId, userId, context) async {
               dialogType: DialogType.SUCCES,
               animType: AnimType.RIGHSLIDE,
               headerAnimationLoop: true,
-              title: "تم التصويت",
+              title: "تم الارسال",
               desc: c.message,
               btnOkOnPress: () {},
               btnOkIcon: Icons.cancel,
@@ -49,8 +43,8 @@ Future addCompitationVote(idComp, memberId, userId, context) async {
               dialogType: DialogType.INFO,
               animType: AnimType.RIGHSLIDE,
               headerAnimationLoop: true,
-              title: "لا يمكنك التصويت",
-              desc: "انت قمت بالتصويت من قبل في هذه المسابقة",
+              title: "لا يمكنك الارسال",
+              desc: c.message,
               btnOkOnPress: () {},
               btnOkIcon: Icons.cancel,
               btnOkColor: MyColors.color1)

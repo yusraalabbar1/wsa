@@ -9,7 +9,7 @@ import 'package:wst/model/modelJson/addMember.dart';
 import 'package:wst/utils/constant/color.dart';
 import 'package:wst/utils/constant/url.dart';
 
-List<Map> addMemberComp = [];
+// List<Map> addMemberComp = [];
 
 Future addMemberCompitition(context, nick) async {
   homecontroller controller = Get.put(homecontroller());
@@ -31,12 +31,7 @@ Future addMemberCompitition(context, nick) async {
   http.StreamedResponse response = await request.send();
   var res = await http.Response.fromStream(response);
   AddMember c = AddMember.fromJson(jsonDecode(res.body));
-// http.StreamedResponse response = await request.send();
-  print("==============add member================");
-  print(controller.saveidComp);
-  print(idSaveprefpref);
-  print(nick);
-  print(c.isSuccess);
+
   print("==============================");
   if (response.statusCode == 200) {
     if (c.isSuccess == true) {
@@ -55,17 +50,24 @@ Future addMemberCompitition(context, nick) async {
     } else {
       AwesomeDialog(
               context: context,
-              dialogType: DialogType.ERROR,
+              dialogType: DialogType.INFO,
               animType: AnimType.RIGHSLIDE,
               headerAnimationLoop: true,
-              title: 'خطأ',
               desc: c.message,
               btnOkOnPress: () {},
               btnOkIcon: Icons.cancel,
-              btnOkColor: Colors.red)
+              btnOkColor: Color.fromARGB(255, 241, 222, 44))
           .show();
     }
   } else {
+    AwesomeDialog(
+            context: context,
+            animType: AnimType.RIGHSLIDE,
+            headerAnimationLoop: true,
+            desc: c.message,
+            btnOkOnPress: () {},
+            btnOkColor: MyColors.color1)
+        .show();
     print(response.reasonPhrase);
   }
 }

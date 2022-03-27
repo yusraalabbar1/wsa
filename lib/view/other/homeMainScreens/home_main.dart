@@ -27,6 +27,7 @@ class _homeMainState extends State<homeMain> {
     // TODO: implement initState
     super.initState();
     allAgent = [];
+    winner = [];
     getAllAgents();
     getWinner();
   }

@@ -4,22 +4,22 @@ class AddMember {
   AddMember({
     required this.isSuccess,
     required this.message,
-    required this.data,
+    // required this.data,
   });
 
   bool isSuccess;
   String message;
-  String data;
+  //String data;
 
   factory AddMember.fromJson(Map<String, dynamic> json) => AddMember(
-        isSuccess: json["isSuccess"],
+        isSuccess: json["isSuccess"] == null ? false : json["isSuccess"],
         message: json["message"],
-        data: json["data"],
+        // data: json["data"],
       );
 
   Map<String, dynamic> toJson() => {
         "isSuccess": isSuccess,
         "message": message,
-        "data": data,
+        // "data": data,
       };
 }

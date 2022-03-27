@@ -1,3 +1,4 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wst/control/homecontroller.dart';
@@ -60,23 +61,33 @@ class _infoCompetState extends State<infoCompet> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "${controller.saveIsFinishComp}",
-                                style: TextStyle(
-                                    color: MyColors.color3,
-                                    fontSize: 14,
-                                    fontFamily: 'Almarai'),
-                              ),
-                              Text(
                                 "${controller.nameComp}",
                                 style: TextStyle(
                                     color: MyColors.color3,
-                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15,
                                     fontFamily: 'Almarai'),
+                              ),
+                              SizedBox(
+                                height: 3,
+                              ),
+                              Center(
+                                child: Text(
+                                  controller.saveIsFinishComp == true
+                                      ? "المسابقة منتهية "
+                                      : "صوت الآن في المسابقة",
+                                  style: TextStyle(
+                                      color: Colors.red,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'Almarai'),
+                                ),
                               ),
                               SizedBox(
                                 height: 5,
                               ),
                               Text(
+                                "رقم الجولة: "
                                 "${controller.savecurrentTourName}",
                                 style: TextStyle(
                                     color: MyColors.color3,
@@ -115,13 +126,13 @@ class _infoCompetState extends State<infoCompet> {
                               SizedBox(
                                 height: 5,
                               ),
-                              Text(
-                                "صوت الآن في المسابقة",
-                                style: TextStyle(
-                                    color: MyColors.color3,
-                                    fontSize: 14,
-                                    fontFamily: 'Almarai'),
-                              )
+                              // Text(
+                              //   "صوت الآن في المسابقة",
+                              //   style: TextStyle(
+                              //       color: MyColors.color3,
+                              //       fontSize: 14,
+                              //       fontFamily: 'Almarai'),
+                              // )
                             ],
                           )),
                           Expanded(
@@ -198,7 +209,21 @@ class _infoCompetState extends State<infoCompet> {
                       borderRadius: BorderRadius.circular(25),
                       side: BorderSide(color: MyColors.color1, width: 2)),
                   onPressed: () {
-                    Navigator.of(context).pushNamed("personSub");
+                    if (controller.saveIsFinishComp == true) {
+                      AwesomeDialog(
+                              context: context,
+                              dialogType: DialogType.ERROR,
+                              animType: AnimType.RIGHSLIDE,
+                              headerAnimationLoop: true,
+                              title: 'Error',
+                              desc: 'المسابقة منتهية لا يمكن الاشتراك',
+                              btnOkOnPress: () {},
+                              btnOkIcon: Icons.cancel,
+                              btnOkColor: Colors.red)
+                          .show();
+                    } else {
+                      Navigator.of(context).pushNamed("personSub");
+                    }
                   },
                   child: Text("اشتراك",
                       style: TextStyle(

@@ -38,6 +38,8 @@ class homecontroller extends GetxController {
   List<Map> saveMapCompitition = [];
   List<Map> savememberInCompt = [];
   List<Map> saveListWinner = [];
+  List saveImagesAgents = [];
+  List<Map> saveMediaAgents = [];
   var saveIsFinishComp;
   var saveCodeMarkting;
   var savecurrentTourName;
@@ -45,6 +47,18 @@ class homecontroller extends GetxController {
   var saveUsersIsLogin;
   var saveMemberId;
   /********************************************* */
+  void SaveMediaAgents(string) {
+    print("control value SaveMediaAgents is:");
+    saveMediaAgents = string;
+    update();
+  }
+
+  void SaveImagesAgents(string) {
+    print("control value SaveImagesAgents is:");
+    saveImagesAgents = string;
+    update();
+  }
+
   void SaveIsFinishComp(string) {
     print("control value SaveIsFinishComp is:");
     saveIsFinishComp = string;

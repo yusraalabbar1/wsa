@@ -67,19 +67,27 @@ class _infoVoteState extends State<infoVote> {
                                 "${MyCompitition[controller.indexCopititon]["name"]}",
                                 style: TextStyle(
                                     color: MyColors.color3,
-                                    fontSize: 14,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
                                     fontFamily: 'Almarai'),
                               ),
                               SizedBox(
                                 height: 5,
                               ),
-                              Text(
-                                "صوت الآن في المسابقة",
-                                style: TextStyle(
-                                    color: MyColors.color3,
-                                    fontSize: 14,
-                                    fontFamily: 'Almarai'),
-                              )
+                              Center(
+                                child: Text(
+                                  MyCompitition[controller.indexCopititon]
+                                              ["isFinish"] ==
+                                          true
+                                      ? "المسابقة منتهية "
+                                      : "صوت الآن في المسابقة",
+                                  style: TextStyle(
+                                      color: Colors.red,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'Almarai'),
+                                ),
+                              ),
                             ],
                           )),
                           Expanded(
@@ -107,10 +115,12 @@ class _infoVoteState extends State<infoVote> {
             GetBuilder<homecontroller>(builder: (controller) {
               return (controller.savememberInCompt == null
                   ? Text("loading..")
-                  : widgetConst(
-                      context,
-                      MyCompitition[controller.indexCopititon]
-                          ["competitionsId"]));
+                  : MyCompitition[controller.indexCopititon]["isFinish"] == true
+                      ? Text("")
+                      : widgetConst(
+                          context,
+                          MyCompitition[controller.indexCopititon]
+                              ["competitionsId"]));
             }),
 
             // widgetConst(context),
@@ -124,6 +134,7 @@ class _infoVoteState extends State<infoVote> {
                     fontFamily: 'Almarai'),
               ),
             ),
+
             Padding(
               padding: const EdgeInsets.only(left: 23, right: 23, top: 5),
               child: Text(

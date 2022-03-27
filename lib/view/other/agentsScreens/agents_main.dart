@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wst/control/homecontroller.dart';
 import 'package:wst/model/modeApi/agent_info.dart';
+import 'package:wst/model/modeApi/agents_details.dart';
 import 'package:wst/model/modeApi/api_all_agents.dart';
 import 'package:wst/utils/constant/color.dart';
 import 'package:wst/view/auth/widget/themeWst.dart';
@@ -39,6 +40,7 @@ class _agentsMainState extends State<agentsMain> {
     });
   }
 
+  homecontroller controller = Get.put(homecontroller());
   @override
   void initState() {
     super.initState();
@@ -64,6 +66,7 @@ class _agentsMainState extends State<agentsMain> {
                       padding: const EdgeInsets.all(10.0),
                       child: Center(
                         child: TextField(
+                          style: TextStyle(color: Colors.white),
                           decoration: InputDecoration(
                               contentPadding: EdgeInsets.all(15.0),
                               prefixIcon: Icon(
@@ -94,6 +97,7 @@ class _agentsMainState extends State<agentsMain> {
                               onTap: () {
                                 controller.IndexAgent(index);
                                 controller.i_agent = 1;
+                                agentDetails(foundAll[index]['id']);
                                 //Navigator.of(context).pushNamed("infoAgent");
                               },
                               child: Column(

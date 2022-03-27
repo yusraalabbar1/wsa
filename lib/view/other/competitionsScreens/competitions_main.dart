@@ -53,7 +53,7 @@ class _competitionsMainState extends State<competitionsMain> {
         controller.saveMapCompitition == null
             ? Text("loading...")
             : ListView(
-                shrinkWrap: true,
+                // shrinkWrap: true,
                 children: [
                   rowAppbar(context),
                   widgetTowButtonCompitition(),
@@ -61,6 +61,7 @@ class _competitionsMainState extends State<competitionsMain> {
                     padding: const EdgeInsets.all(20.0),
                     child: Center(
                       child: TextField(
+                        style: TextStyle(color: Colors.white),
                         decoration: InputDecoration(
                             contentPadding: EdgeInsets.all(15.0),
                             prefixIcon: Icon(
@@ -287,5 +288,87 @@ class _competitionsMainState extends State<competitionsMain> {
         });
       },
     );
+  }
+
+  Widget pageVote(context) {
+    return GetBuilder<homecontroller>(builder: (controller) {
+      return (ListView.builder(
+          shrinkWrap: true,
+          scrollDirection: Axis.vertical,
+          physics: ScrollPhysics(),
+          itemCount: foundCompitition.length,
+          itemBuilder: (context, index) {
+            return InkWell(
+              onTap: (() {
+                controller.SaveindexCopititon(index);
+                print(index);
+                memberInCompt = [];
+                allMemberCompitition(foundCompitition[index]['competitionsId']);
+                Navigator.of(context).pushNamed("infoVote");
+              }),
+              child: Card(
+                child: Stack(children: [
+                  Container(
+                    height: 123,
+                    width: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image:
+                                AssetImage("assets/images/backCompititon.png"),
+                            fit: BoxFit.cover)),
+                  ),
+                  Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 123,
+                      color: Color(0xff141E34).withOpacity(0.6),
+                      child: Row(
+                        children: [
+                          Expanded(
+                              child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "${foundCompitition[index]['name']}",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    fontFamily: 'Almarai'),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                "صوت الآن في المسابقة",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    fontFamily: 'Almarai'),
+                              )
+                            ],
+                          )),
+                          Expanded(
+                              child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.asset("assets/images/trophy.png"),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                "${foundCompitition[index]['awardAmount']}",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    fontFamily: 'Almarai'),
+                              )
+                            ],
+                          ))
+                        ],
+                      ))
+                ]),
+              ),
+            );
+          }));
+    });
   }
 }
