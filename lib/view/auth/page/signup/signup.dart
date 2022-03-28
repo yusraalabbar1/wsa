@@ -46,11 +46,10 @@ class _signupState extends State<signup> {
                   ),
                   wstContainer(context),
                   Container(
-                    alignment: Alignment.centerRight,
                     padding:
-                        const EdgeInsets.only(left: 30, right: 50, bottom: 10),
+                        const EdgeInsets.only(left: 50, right: 50, bottom: 10),
                     child: Text(
-                      "الاسم",
+                      "First Name".tr,
                       style: Theme.of(context).textTheme.headline4,
                     ),
                   ),
@@ -63,7 +62,7 @@ class _signupState extends State<signup> {
                         style: TextStyle(color: MyColors.color3),
                         textInputAction: TextInputAction.next,
                         decoration: InputDecoration(
-                          hintText: 'احمد',
+                          hintText: '',
                         ),
                         validator: (text) {
                           if (text!.length > 15) {
@@ -86,11 +85,10 @@ class _signupState extends State<signup> {
                     })),
                   ),
                   Container(
-                    alignment: Alignment.centerRight,
                     padding:
-                        const EdgeInsets.only(left: 30, right: 50, bottom: 10),
+                        const EdgeInsets.only(left: 50, right: 50, bottom: 10),
                     child: Text(
-                      "اسم الأب",
+                      "Name father".tr,
                       style: Theme.of(context).textTheme.headline4,
                     ),
                   ),
@@ -103,7 +101,7 @@ class _signupState extends State<signup> {
                         style: TextStyle(color: MyColors.color3),
                         textInputAction: TextInputAction.next,
                         decoration: InputDecoration(
-                          hintText: 'احمد',
+                          hintText: '',
                         ),
                         onChanged: (value) {
                           // do something
@@ -126,11 +124,10 @@ class _signupState extends State<signup> {
                     })),
                   ),
                   Container(
-                    alignment: Alignment.centerRight,
                     padding:
-                        const EdgeInsets.only(left: 30, right: 50, bottom: 10),
+                        const EdgeInsets.only(left: 50, right: 50, bottom: 10),
                     child: Text(
-                      "الكنية",
+                      "Last Name".tr,
                       style: Theme.of(context).textTheme.headline4,
                     ),
                   ),
@@ -143,7 +140,7 @@ class _signupState extends State<signup> {
                         style: TextStyle(color: MyColors.color3),
                         textInputAction: TextInputAction.next,
                         decoration: InputDecoration(
-                          hintText: 'العبار',
+                          hintText: '',
                         ),
                         onChanged: (value) {
                           // do something
@@ -187,7 +184,7 @@ class _signupState extends State<signup> {
                           }
                         },
                         child: Text(
-                          "استمرار",
+                          "continue".tr,
                           style: TextStyle(
                               fontSize: 13,
                               color: MyColors.color3,
@@ -203,7 +200,7 @@ class _signupState extends State<signup> {
                         padding: const EdgeInsets.only(
                             left: 30, right: 50, bottom: 10),
                         child: Text(
-                          "هل لديك حساب؟",
+                          "Do you have an Account?".tr,
                           style: Theme.of(context).textTheme.headline4,
                         ),
                       ),
@@ -212,7 +209,7 @@ class _signupState extends State<signup> {
                           alignment: Alignment.centerRight,
                           padding: const EdgeInsets.only(bottom: 10),
                           child: Text(
-                            "تسجيل الدخول",
+                            "Login".tr,
                             style: Theme.of(context).textTheme.headline3,
                           ),
                         ),

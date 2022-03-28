@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wst/control/homecontroller.dart';
 import 'package:wst/model/modeApi/get_all_social.dart';
+import 'package:wst/model/modeApi/get_user_profile_withmedia.dart';
 import 'package:wst/model/modeApi/update_user.dart';
 import 'package:wst/utils/constant/color.dart';
 
@@ -51,16 +52,8 @@ dialogForFace(context) async {
                       },
                       onSaved: (string) {
                         print("on saved");
-                        if (markFace == null) {
-                          pref.setInt("markFacebook", 0);
-                          markFace = 0;
-                        } else {
-                          pref.setInt("markFacebook", 1);
-                          markFace = 1;
-                        }
 
                         face = string;
-                        controller.SaveLinkFace(string);
                       },
                     ));
                   }),
@@ -88,6 +81,7 @@ dialogForFace(context) async {
                             print("valid");
                             print("##################");
                             print(markFace);
+                            getUserProfilWithMedia(face, 7);
                             Navigator.of(context).pop();
                             // updateUser(first, mid, last, tel);
                             // Navigator.of(context).pop();

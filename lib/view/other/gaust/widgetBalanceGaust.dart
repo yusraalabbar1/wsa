@@ -1,12 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:wst/control/homecontroller.dart';
-import 'package:wst/model/modeApi/return_id_froml_email.dart';
-import 'package:wst/model/modeApi/userBalance.dart';
 import 'package:wst/view/other/homeMainScreens/widget_home.dart';
 
-Widget widgetBalance(context) {
+Widget widgetBalanceGaust(context) {
   return Container(
     decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -25,7 +20,7 @@ Widget widgetBalance(context) {
           children: [
             Container(
               child: Text(
-                "Total available balance".tr,
+                "اجمالي الرصيد المتوفر",
                 style: TextStyle(
                     color: Colors.white, fontSize: 14, fontFamily: 'Almarai'),
               ),
@@ -37,24 +32,20 @@ Widget widgetBalance(context) {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  child: GetBuilder<homecontroller>(builder: (controller) {
-                    return (Text(
-                      controller.savebalanceForUser == null
-                          ? ""
-                          : controller.savebalanceForUser.toString(),
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 30,
-                          fontFamily: 'BAHNSCHRIFT'),
-                    ));
-                  }),
+                  child: Text(
+                    "0",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 55,
+                        fontFamily: 'BAHNSCHRIFT'),
+                  ),
                 ),
                 Container(
                   child: Text(
                     "USD",
                     style: TextStyle(
                         color: Colors.white,
-                        fontSize: 20,
+                        fontSize: 30,
                         fontFamily: 'BAHNSCHRIFT'),
                   ),
                 ),
@@ -66,7 +57,29 @@ Widget widgetBalance(context) {
             child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            buttonsend("send".tr, Icons.call_made, context),
+            Container(
+              width: 127,
+              height: 50,
+              child: RaisedButton.icon(
+                onPressed: () {
+                  print('Button Clicked.');
+                },
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(25.0))),
+                label: Text(
+                  "ارسال",
+                  style: TextStyle(
+                      color: Colors.white, fontSize: 14, fontFamily: 'Almarai'),
+                ),
+                icon: Icon(
+                  Icons.call_made,
+                  color: Colors.white,
+                ),
+                textColor: Colors.white,
+                splashColor: Colors.white,
+                color: Color(0xff464699),
+              ),
+            )
             // SizedBox(
             //   height: 20,
             // ),

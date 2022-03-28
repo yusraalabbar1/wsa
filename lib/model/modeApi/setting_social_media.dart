@@ -11,6 +11,7 @@ var youtubeSitting = "";
 var instagramSitting = "";
 var whatsupSitting = "";
 var telgramSitting = "";
+var Privacy = "";
 getSettingSpicSocialMediaFacebook() async {
   var request = http.Request('GET', Uri.parse(url_social_media));
 
@@ -93,6 +94,24 @@ getSettingSpicSocialMediaTelgram() async {
     setting c = setting.fromJson(jsonDecode(res.body));
     telgramSitting = c.data[0].toJson()["value"];
     print(telgramSitting);
+  } else {
+    print(response.reasonPhrase);
+  }
+}
+
+getSettingPrivasyPolicy() async {
+  var request = http.Request(
+      'GET',
+      Uri.parse(
+          'http://212.24.108.54/wsa/api/setting?settingName=setting.privacy'));
+
+  http.StreamedResponse response = await request.send();
+
+  if (response.statusCode == 200) {
+    var res = await http.Response.fromStream(response);
+    setting c = setting.fromJson(jsonDecode(res.body));
+    Privacy = c.data[0].toJson()["value"];
+    print(Privacy);
   } else {
     print(response.reasonPhrase);
   }

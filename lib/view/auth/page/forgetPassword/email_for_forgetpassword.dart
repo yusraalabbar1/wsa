@@ -36,7 +36,7 @@ class _emailForForgetPasswordState extends State<emailForForgetPassword> {
                     padding:
                         const EdgeInsets.only(left: 30, right: 50, bottom: 10),
                     child: Text(
-                      "البريد الالكتروني",
+                      "Email".tr,
                       style: Theme.of(context).textTheme.headline4,
                     ),
                   ),
@@ -92,7 +92,7 @@ class _emailForForgetPasswordState extends State<emailForForgetPassword> {
                           }
                         },
                         child: Text(
-                          "اعادة تعيين",
+                          "Reset".tr,
                           style: TextStyle(
                               fontSize: 13,
                               color: MyColors.color3,

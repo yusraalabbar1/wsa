@@ -23,7 +23,7 @@ showLoading(context) {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text("يمكن إجراء تعديل على الاسم والرقم فقط",
+                  Text(" إجراء تعديل ",
                       style: TextStyle(
                           color: MyColors.color2,
                           fontSize: 13,

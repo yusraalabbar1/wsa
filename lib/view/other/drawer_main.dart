@@ -182,7 +182,7 @@ Widget drawerMain(context) {
                   ),
                 ),
                 Container(
-                    child: Text("تواصل معناعلى الواتساب",
+                    child: Text("تواصل معنا على الواتساب",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 14,

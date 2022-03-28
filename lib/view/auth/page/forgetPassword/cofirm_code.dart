@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:wst/utils/constant/color.dart';
 import 'package:wst/view/auth/widget/themeWst.dart';
 
@@ -28,7 +29,7 @@ class _confirmCodeUsingMobileState extends State<confirmCodeUsingMobile> {
                   padding:
                       const EdgeInsets.only(left: 30, right: 50, bottom: 10),
                   child: Text(
-                    "رقم الهاتف",
+                    "phone number".tr,
                     style: Theme.of(context).textTheme.headline4,
                   ),
                 ),
@@ -51,7 +52,7 @@ class _confirmCodeUsingMobileState extends State<confirmCodeUsingMobile> {
                   child: buttonStart(
                       MyColors.color1,
                       MyColors.color1,
-                      "ارسال رسالة التأكيد",
+                      "send a confirmation".tr,
                       MyColors.color3,
                       context,
                       "resetCodePassword"),

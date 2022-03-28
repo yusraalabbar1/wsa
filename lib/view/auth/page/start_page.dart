@@ -10,6 +10,8 @@ import 'package:wst/model/modeApi/setting_social_media.dart';
 import 'package:wst/model/modeApi/setting_time_otp.dart';
 import 'package:wst/utils/constant/color.dart';
 import 'package:wst/view/auth/widget/themeWst.dart';
+import 'package:wst/view/other/gaust/gaust.dart';
+import 'package:wst/view/other/home_page.dart';
 
 class startPage extends StatefulWidget {
   startPage({Key? key}) : super(key: key);
@@ -60,6 +62,7 @@ class _startPageState extends State<startPage> {
     getSettingSpicSocialMediaWhatapp();
     getSettingSpicSocialMediaTelgram();
     getDeviceDetails();
+    getSettingPrivasyPolicy();
     // rr();
     // getCity(0);
   }
@@ -88,13 +91,52 @@ class _startPageState extends State<startPage> {
                   ),
                 ),
                 Center(
-                  child: buttonStart(MyColors.color2, MyColors.color1,
-                      "سجل الان في التطبيق", MyColors.color3, context, "login"),
+                  child: Container(
+                    width: double.infinity,
+                    height: 55,
+                    margin: EdgeInsets.only(
+                        bottom: 10, right: 30, left: 30, top: 10),
+                    child: RaisedButton(
+                      color: MyColors.color2,
+                      elevation: 10,
+                      splashColor: MyColors.color3,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25),
+                          side: BorderSide(color: MyColors.color1, width: 2)),
+                      onPressed: () {
+                        // Navigator.of(context).pushNamed("login");
+                        dialogPrivicy(context);
+                      },
+                      child: Text(
+                        "Creat an Account".tr,
+                        style: TextStyle(
+                            fontSize: 13,
+                            color: MyColors.color3,
+                            fontFamily: 'Almarai'),
+                      ),
+                    ),
+                  ),
                 ),
                 Center(
                   child: buttonStart(MyColors.color1, MyColors.color1,
-                      "تسجيل الدخول", MyColors.color3, context, "oldLogin"),
+                      "Login".tr, MyColors.color3, context, "oldLogin"),
                 ),
+                Center(
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => new gaust()),
+                          (Route<dynamic> route) => false);
+                    },
+                    child: Text("Guest".tr,
+                        style: TextStyle(
+                            fontSize: 12,
+                            color: Color(0xff707070),
+                            fontFamily: 'Almarai')),
+                  ),
+                )
               ],
             ) /* add child content here */,
           ),
@@ -103,9 +145,9 @@ class _startPageState extends State<startPage> {
             child: Container(
               margin: EdgeInsets.only(bottom: 20),
               child: Text(
-                "جميع الحقوق محفوظة لدى التطبيق 2021",
+                "You are agreeing to our terms of service and privacy plicy".tr,
                 style: TextStyle(
-                    fontSize: 13,
+                    fontSize: 11,
                     color: MyColors.color3,
                     fontFamily: 'Almarai'),
               ),
@@ -114,5 +156,85 @@ class _startPageState extends State<startPage> {
         ],
       ),
     );
+  }
+
+  dialogPrivicy(context) async {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text("privacy policy".tr,
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Almarai')),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(Privacy.toString(),
+                    style: TextStyle(
+                        color: MyColors.color2,
+                        fontSize: 13,
+                        fontFamily: 'Almarai')),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                    "You are agreeing to our terms of service and privacy plicy?"
+                        .tr,
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Almarai')),
+                SizedBox(
+                  height: 30,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    RaisedButton(
+                      color: MyColors.color1,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25),
+                          side: BorderSide(color: MyColors.color1, width: 2)),
+                      child: Text("موافق",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 13,
+                              fontFamily: 'Almarai')),
+                      onPressed: () {
+                        Navigator.of(context).pushReplacementNamed("login");
+                      },
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    RaisedButton(
+                      color: Color.fromARGB(255, 231, 38, 64),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25),
+                          side: BorderSide(
+                              color: Color.fromARGB(255, 231, 38, 64),
+                              width: 2)),
+                      child: Text("إلغاء",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 13,
+                              fontFamily: 'Almarai')),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  ],
+                )
+              ],
+            ),
+          );
+        });
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wst/control/homecontroller.dart';
 import 'package:wst/model/modeApi/get_all_social.dart';
+import 'package:wst/model/modeApi/get_user_profile_withmedia.dart';
 import 'package:wst/model/modeApi/update_user.dart';
 import 'package:wst/utils/constant/color.dart';
 
@@ -51,14 +52,6 @@ dialogForInsta(context) async {
                       onSaved: (string) {
                         print("on saved");
                         insta = string;
-                        if (markInsta == null) {
-                          pref.setInt("markInsta", 0);
-                          markInsta = 0;
-                        } else {
-                          pref.setInt("markInsta", 1);
-                          markInsta = 1;
-                        }
-                        controller.SaveLinkInsta(string);
                       },
                     ));
                   }),
@@ -85,6 +78,7 @@ dialogForInsta(context) async {
                             print(markInsta);
                             //getAllSocialMidea("Instgram", insta, markInsta);
                             print("valid");
+                            getUserProfilWithMedia(insta, 6);
                             Navigator.of(context).pop();
                             // updateUser(first, mid, last, tel);
                             // Navigator.of(context).pop();

@@ -48,18 +48,17 @@ class _oldLoginState extends State<oldLogin> {
                   Container(
                     alignment: Alignment.center,
                     padding:
-                        const EdgeInsets.only(left: 30, right: 50, bottom: 10),
+                        const EdgeInsets.only(left: 50, right: 50, bottom: 10),
                     child: Text(
-                      "تسجيل الدخول",
+                      "Login".tr,
                       style: Theme.of(context).textTheme.headline4,
                     ),
                   ),
                   Container(
-                    alignment: Alignment.centerRight,
                     padding:
-                        const EdgeInsets.only(left: 30, right: 50, bottom: 10),
+                        const EdgeInsets.only(left: 50, right: 50, bottom: 10),
                     child: Text(
-                      "اسم المستخدم",
+                      "User Name".tr,
                       style: Theme.of(context).textTheme.headline4,
                     ),
                   ),
@@ -81,9 +80,6 @@ class _oldLoginState extends State<oldLogin> {
                           }
                           return null;
                         },
-                        decoration: const InputDecoration(
-                          hintText: 'الاسم',
-                        ),
                         onSaved: (string) {
                           email = string;
                           controller.SaveUserName(string);
@@ -92,11 +88,10 @@ class _oldLoginState extends State<oldLogin> {
                     })),
                   ),
                   Container(
-                    alignment: Alignment.centerRight,
                     padding:
-                        const EdgeInsets.only(left: 30, right: 50, bottom: 10),
+                        const EdgeInsets.only(left: 50, right: 50, bottom: 10),
                     child: Text(
-                      "كلمة المرور",
+                      "Pass Word".tr,
                       style: Theme.of(context).textTheme.headline4,
                     ),
                   ),
@@ -122,8 +117,8 @@ class _oldLoginState extends State<oldLogin> {
                         decoration: InputDecoration(
                           suffixIcon: IconButton(
                               icon: Icon(_isObscure
-                                  ? Icons.visibility
-                                  : Icons.visibility_off),
+                                  ? Icons.visibility_off
+                                  : Icons.visibility),
                               onPressed: () {
                                 setState(() {
                                   _isObscure = !_isObscure;
@@ -146,9 +141,9 @@ class _oldLoginState extends State<oldLogin> {
                       Container(
                         alignment: Alignment.centerRight,
                         padding: const EdgeInsets.only(
-                            left: 30, right: 50, bottom: 10),
+                            left: 50, right: 50, bottom: 10),
                         child: Text(
-                          "هل نسيت كلمة المرور؟",
+                          "Did you Forget Your Passord?".tr,
                           style: Theme.of(context).textTheme.headline4,
                         ),
                       ),
@@ -157,7 +152,7 @@ class _oldLoginState extends State<oldLogin> {
                           alignment: Alignment.centerRight,
                           padding: const EdgeInsets.only(bottom: 10),
                           child: Text(
-                            "اعادة التعيين",
+                            "Reset".tr,
                             style: Theme.of(context).textTheme.headline3,
                           ),
                         ),
@@ -196,8 +191,8 @@ class _oldLoginState extends State<oldLogin> {
                             print("not validddddddddddddddd");
                           }
                         },
-                        child: const Text(
-                          "تسجيل الدخول",
+                        child: Text(
+                          "Login".tr,
                           style: TextStyle(
                               fontSize: 13,
                               color: MyColors.color3,

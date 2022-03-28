@@ -56,7 +56,7 @@ Future send_inf_signup(t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, context) async {
               context: context,
               animType: AnimType.RIGHSLIDE,
               headerAnimationLoop: true,
-              desc: "هذا المستخدم موجود يرجى تغيير الاسم",
+              desc: c.message,
               btnOkOnPress: () {},
               btnOkIcon: Icons.cancel,
               btnOkColor: MyColors.color1)

@@ -26,6 +26,7 @@ Future userBalanc() async {
   if (response.statusCode == 200) {
     if (c.isSuccess == true) {
       balanceForUser = c.data.balances;
+      controller.SavebalanceForUser(balanceForUser);
       print(c.data.balances);
     } else {}
   } else {

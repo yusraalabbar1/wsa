@@ -22,7 +22,7 @@ Widget widgetTowButtonCompitition() {
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(25.0))),
             child: Text(
-              "التصويت",
+              "Vote".tr,
               style: TextStyle(
                   color: Colors.white, fontSize: 14, fontFamily: 'Almarai'),
             ),
@@ -49,7 +49,7 @@ Widget widgetTowButtonCompitition() {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(25.0))),
               child: Text(
-                "المسابقات",
+                "Competitions".tr,
                 style: TextStyle(
                     color: Colors.white, fontSize: 14, fontFamily: 'Almarai'),
               ),

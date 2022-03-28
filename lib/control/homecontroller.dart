@@ -46,7 +46,22 @@ class homecontroller extends GetxController {
   var savecurrentTourTimeLimit;
   var saveUsersIsLogin;
   var saveMemberId;
+  var saveimageProfile;
+
+  var savebalanceForUser;
   /********************************************* */
+  void SavebalanceForUser(string) {
+    print("control value savebalanceForUser is:");
+    savebalanceForUser = string;
+    update();
+  }
+
+  void SaveimageProfile(string) {
+    print("control value saveimageProfile is:");
+    saveimageProfile = string;
+    update();
+  }
+
   void SaveMediaAgents(string) {
     print("control value SaveMediaAgents is:");
     saveMediaAgents = string;

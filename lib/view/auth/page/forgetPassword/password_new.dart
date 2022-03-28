@@ -38,7 +38,7 @@ class _passwordNewState extends State<passwordNew> {
                     padding:
                         const EdgeInsets.only(left: 30, right: 50, bottom: 10),
                     child: Text(
-                      "كلمة المرور الجديدة ",
+                      "New password".tr,
                       style: Theme.of(context).textTheme.headline4,
                     ),
                   ),
@@ -107,7 +107,7 @@ class _passwordNewState extends State<passwordNew> {
                           }
                         },
                         child: Text(
-                          "اعادة تعيين",
+                          "Reset".tr,
                           style: TextStyle(
                               fontSize: 13,
                               color: MyColors.color3,

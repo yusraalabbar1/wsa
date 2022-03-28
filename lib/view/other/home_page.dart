@@ -7,6 +7,7 @@ import 'package:wst/model/modeApi/allMemberCompitition.dart';
 import 'package:wst/model/modeApi/commissionBalance.dart';
 import 'package:wst/model/modeApi/common_questions.dart';
 import 'package:wst/model/modeApi/get_all_social.dart';
+import 'package:wst/model/modeApi/get_user_profile_withmedia.dart';
 import 'package:wst/model/modeApi/infoNotific.dart';
 import 'package:wst/model/modeApi/model_compitition.dart';
 import 'package:wst/model/modeApi/userBalancLog.dart';
@@ -34,7 +35,6 @@ final List<Widget> widgetOptions = <Widget>[
   competitionsMain(),
   homeMain(),
   register1Main(),
-  // register2Main(),
 ];
 
 class _homePageState extends State<homePage> {
@@ -49,9 +49,11 @@ class _homePageState extends State<homePage> {
     commonQuestionsapi();
     MyCompitition = [];
     allCompititionapi();
+
     userBalanc();
     userBalancLog();
     comissionBalanc();
+    getUserProfilWithMedia("dd", 9);
     // allMemberCompitition(controller.saveidComp);
   }
 

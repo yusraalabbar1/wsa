@@ -21,7 +21,7 @@ Widget towButtonRegister1() {
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(25.0))),
             child: Text(
-              "الأرباح",
+              "Profits".tr,
               style: TextStyle(
                   color: Colors.white, fontSize: 14, fontFamily: 'Almarai'),
             ),
@@ -48,7 +48,7 @@ Widget towButtonRegister1() {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(25.0))),
               child: Text(
-                "السجل",
+                "Register".tr,
                 style: TextStyle(
                     color: Colors.white, fontSize: 14, fontFamily: 'Almarai'),
               ),

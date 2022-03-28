@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:get/get.dart';
 import 'package:wst/control/homecontroller.dart';
 import 'package:wst/model/modeApi/get_all_social.dart';
+import 'package:wst/model/modeApi/get_user_profile_withmedia.dart';
 import 'package:wst/model/modeApi/update_user.dart';
 import 'package:wst/utils/constant/color.dart';
 
@@ -50,14 +51,6 @@ dialogForIeleg(context) async {
                       onSaved: (string) {
                         print("on saved");
                         tele = string;
-                        if (marktele == null) {
-                          pref.setInt("marktele", 0);
-                          marktele = 0;
-                        } else {
-                          pref.setInt("marktele", 1);
-                          marktele = 1;
-                        }
-                        controller.SaveLinktele(string);
                       },
                     ));
                   }),
@@ -82,6 +75,7 @@ dialogForIeleg(context) async {
                           if (formdata!.validate()) {
                             formdata.save();
                             //getAllSocialMidea("Telegram", tele, marktele);
+                            getUserProfilWithMedia(tele, 8);
                             print("valid");
                             Navigator.of(context).pop();
                             // updateUser(first, mid, last, tel);

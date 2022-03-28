@@ -52,11 +52,10 @@ class _loginState extends State<login> {
                     height: 20,
                   ),
                   Container(
-                    alignment: Alignment.centerRight,
                     padding:
-                        const EdgeInsets.only(left: 30, right: 50, bottom: 10),
+                        const EdgeInsets.only(left: 50, right: 50, bottom: 10),
                     child: Text(
-                      "الدولة",
+                      "Country".tr,
                       style: Theme.of(context).textTheme.headline4,
                     ),
                   ),
@@ -85,8 +84,8 @@ class _loginState extends State<login> {
                                   child: DropdownButton<dynamic>(
                                     isDense: true,
                                     dropdownColor: MyColors.color2,
-                                    hint: const Text(
-                                      "Select country",
+                                    hint: Text(
+                                      "Select country".tr,
                                       style: TextStyle(
                                         color: MyColors.color4,
                                       ),
@@ -124,7 +123,7 @@ class _loginState extends State<login> {
                                             )),
                                             Container(
                                                 margin: const EdgeInsets.only(
-                                                    right: 10),
+                                                    right: 10, left: 10),
                                                 child: Text(
                                                     map["countryDescAr"],
                                                     style: const TextStyle(
@@ -144,11 +143,10 @@ class _loginState extends State<login> {
                     ),
                   ),
                   Container(
-                    alignment: Alignment.centerRight,
                     padding:
-                        const EdgeInsets.only(left: 30, right: 50, bottom: 10),
+                        const EdgeInsets.only(left: 50, right: 50, bottom: 10),
                     child: Text(
-                      "رقم الهاتف",
+                      "phone number".tr,
                       style: Theme.of(context).textTheme.headline4,
                     ),
                   ),
@@ -180,11 +178,11 @@ class _loginState extends State<login> {
                           onSaved: (string) {
                             print("on saved");
                             TelephoneNumber = string;
-                            // controller.SaveNumberPhone("00" +
-                            //     "${controller.saveCountryCode}" +
-                            //     string!);
+                            controller.SaveNumberPhone("00" +
+                                "${controller.saveCountryCode}" +
+                                string!);
 
-                            controller.SaveNumberPhone("00221778821171");
+                            // controller.SaveNumberPhone("00221778821171");
                           },
                           // onChanged: (value) {
                           //    controller.SaveNumberPhone(int.parse(value));
@@ -194,11 +192,10 @@ class _loginState extends State<login> {
                     ),
                   ),
                   Container(
-                    alignment: Alignment.centerRight,
                     padding:
-                        const EdgeInsets.only(left: 30, right: 50, bottom: 10),
+                        const EdgeInsets.only(left: 50, right: 50, bottom: 10),
                     child: Text(
-                      "الكود التسويقي / (اختياري)",
+                      "Marketing Code  (optional)".tr,
                       style: Theme.of(context).textTheme.headline4,
                     ),
                   ),
@@ -242,7 +239,7 @@ class _loginState extends State<login> {
                           }
                         },
                         child: Text(
-                          "استمرار",
+                          "continue".tr,
                           style: TextStyle(
                               fontSize: 13,
                               color: MyColors.color3,
@@ -257,9 +254,9 @@ class _loginState extends State<login> {
                       Container(
                         alignment: Alignment.centerRight,
                         padding: const EdgeInsets.only(
-                            left: 30, right: 50, bottom: 30),
+                            left: 50, right: 50, bottom: 30),
                         child: Text(
-                          "هل لديك حساب؟",
+                          "Do you have an Account?".tr,
                           style: Theme.of(context).textTheme.headline4,
                         ),
                       ),
@@ -268,7 +265,7 @@ class _loginState extends State<login> {
                           alignment: Alignment.centerRight,
                           padding: const EdgeInsets.only(bottom: 30),
                           child: Text(
-                            "تسجيل الدخول",
+                            "Login".tr,
                             style: Theme.of(context).textTheme.headline3,
                           ),
                         ),
@@ -283,7 +280,7 @@ class _loginState extends State<login> {
                     child: Container(
                       margin: EdgeInsets.only(bottom: 10),
                       child: Text(
-                        "تواصل مع خدمة العملاء",
+                        "contact customer service".tr,
                         style: TextStyle(
                             fontSize: 13,
                             color: MyColors.color3,
@@ -298,7 +295,7 @@ class _loginState extends State<login> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            mediaface("فيسبوك"),
+                            mediaface("Facebook".tr),
                             const SizedBox(
                               width: 5,
                             ),
@@ -309,7 +306,7 @@ class _loginState extends State<login> {
                             const SizedBox(
                               width: 5,
                             ),
-                            mediawhat("واتساب"),
+                            mediawhat("Whatsapp".tr),
                             const SizedBox(
                               width: 5,
                             ),
@@ -320,7 +317,7 @@ class _loginState extends State<login> {
                             const SizedBox(
                               width: 5,
                             ),
-                            mediatele("تلغرام"),
+                            mediatele("Telegram".tr),
                             const SizedBox(
                               width: 5,
                             ),

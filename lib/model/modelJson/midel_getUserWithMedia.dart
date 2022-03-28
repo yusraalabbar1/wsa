@@ -4,64 +4,54 @@
 
 import 'dart:convert';
 
-resultLoginModel welcomeFromJson(String str) =>
-    resultLoginModel.fromJson(json.decode(str));
-
-String welcomeToJson(resultLoginModel data) => json.encode(data.toJson());
-
-class resultLoginModel {
-  resultLoginModel({
-    this.isSuccess,
-    this.message,
+class ModeGetUserProfileWithMedia {
+  ModeGetUserProfileWithMedia({
+    required this.isSuccess,
+    required this.message,
+    required this.data,
   });
 
-  bool? isSuccess;
-  String? message;
+  bool isSuccess;
+  String message;
+  Data data;
 
-  factory resultLoginModel.fromJson(Map<String, dynamic> json) =>
-      resultLoginModel(
+  factory ModeGetUserProfileWithMedia.fromJson(Map<String, dynamic> json) =>
+      ModeGetUserProfileWithMedia(
         isSuccess: json["isSuccess"],
         message: json["message"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "isSuccess": isSuccess,
-        "message": message,
-      };
-}
-
-class resultLoginModelData {
-  resultLoginModelData({
-    this.isSuccess,
-    this.message,
-    this.token,
-    this.data,
-  });
-
-  bool? isSuccess;
-  String? message;
-  String? token;
-  Data? data;
-
-  factory resultLoginModelData.fromJson(Map<String, dynamic> json) =>
-      resultLoginModelData(
-        isSuccess: json["isSuccess"],
-        message: json["message"],
-        token: json["token"] == null ? "" : json["token"],
         data: Data.fromJson(json["data"]),
       );
 
   Map<String, dynamic> toJson() => {
         "isSuccess": isSuccess,
         "message": message,
-        "token": token,
-        "data": data?.toJson(),
+        "data": data.toJson(),
       };
 }
 
 class Data {
   Data({
-    required this.balances,
+    required this.user,
+    required this.userMedia,
+  });
+
+  User user;
+  List<UserMedia> userMedia;
+
+  factory Data.fromJson(Map<String, dynamic> json) => Data(
+        user: User.fromJson(json["user"]),
+        userMedia: List<UserMedia>.from(
+            json["userMedia"].map((x) => UserMedia.fromJson(x))),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "user": user.toJson(),
+        "userMedia": List<dynamic>.from(userMedia.map((x) => x.toJson())),
+      };
+}
+
+class User {
+  User({
     required this.id,
     required this.userName,
     required this.password,
@@ -75,14 +65,13 @@ class Data {
     required this.imageProfile,
     required this.uniqueCode,
     required this.marketingCode,
-    required this.userMarketingCode,
+    this.userMarketingCode,
     required this.deciveId,
     required this.createdDate,
     required this.otpCode,
     required this.active,
   });
 
-  double balances;
   int id;
   String userName;
   String password;
@@ -97,13 +86,12 @@ class Data {
   String uniqueCode;
   String marketingCode;
   dynamic userMarketingCode;
-  dynamic deciveId;
+  String deciveId;
   DateTime createdDate;
   dynamic otpCode;
   bool active;
 
-  factory Data.fromJson(Map<String, dynamic> json) => Data(
-        balances: json["balances"].toDouble(),
+  factory User.fromJson(Map<String, dynamic> json) => User(
         id: json["id"],
         userName: json["userName"],
         password: json["password"],
@@ -114,7 +102,7 @@ class Data {
         countryId: json["countryId"],
         cityId: json["cityId"],
         telephoneNumber: json["telephoneNumber"],
-        imageProfile: json["imageProfile"] ?? "",
+        imageProfile: json["imageProfile"],
         uniqueCode: json["uniqueCode"],
         marketingCode: json["marketingCode"],
         userMarketingCode: json["userMarketingCode"],
@@ -125,7 +113,6 @@ class Data {
       );
 
   Map<String, dynamic> toJson() => {
-        "balances": balances,
         "id": id,
         "userName": userName,
         "password": password,
@@ -144,5 +131,49 @@ class Data {
         "createdDate": createdDate.toIso8601String(),
         "otpCode": otpCode,
         "active": active,
+      };
+}
+
+class UserMedia {
+  UserMedia({
+    required this.userId,
+    required this.mediaType,
+    required this.code,
+    required this.mediaTypeArDesc,
+    required this.mediaTypeEnDesc,
+    required this.value,
+    required this.active,
+    required this.id,
+  });
+
+  int userId;
+  int mediaType;
+  String code;
+  String mediaTypeArDesc;
+  String mediaTypeEnDesc;
+  String value;
+  bool active;
+  int id;
+
+  factory UserMedia.fromJson(Map<String, dynamic> json) => UserMedia(
+        userId: json["userId"],
+        mediaType: json["mediaType"],
+        code: json["code"],
+        mediaTypeArDesc: json["mediaTypeArDesc"],
+        mediaTypeEnDesc: json["mediaTypeEnDesc"],
+        value: json["value"],
+        active: json["active"],
+        id: json["id"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "userId": userId,
+        "mediaType": mediaType,
+        "code": code,
+        "mediaTypeArDesc": mediaTypeArDesc,
+        "mediaTypeEnDesc": mediaTypeEnDesc,
+        "value": value,
+        "active": active,
+        "id": id,
       };
 }

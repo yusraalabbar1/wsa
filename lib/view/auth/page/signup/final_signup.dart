@@ -69,11 +69,10 @@ class _finalLoginState extends State<finalLogin> {
                 children: [
                   wstContainer(context),
                   Container(
-                    alignment: Alignment.center,
                     padding:
                         const EdgeInsets.only(left: 30, right: 50, bottom: 10),
                     child: Text(
-                      "رائع جداً لقد أتممت جميع الخطوات",
+                      "Super, you have done all the steps".tr,
                       style: Theme.of(context).textTheme.headline4,
                     ),
                   ),
@@ -82,16 +81,15 @@ class _finalLoginState extends State<finalLogin> {
                     padding:
                         const EdgeInsets.only(left: 30, right: 50, bottom: 10),
                     child: Text(
-                      "لنختر اليوزر الخاص بك وكلمة المرور",
+                      "Let's choose the User and Password".tr,
                       style: Theme.of(context).textTheme.headline4,
                     ),
                   ),
                   Container(
-                    alignment: Alignment.centerRight,
                     padding:
-                        const EdgeInsets.only(left: 30, right: 50, bottom: 10),
+                        const EdgeInsets.only(left: 50, right: 50, bottom: 10),
                     child: Text(
-                      "اسم المستخدم",
+                      "User Name".tr,
                       style: Theme.of(context).textTheme.headline4,
                     ),
                   ),
@@ -104,7 +102,7 @@ class _finalLoginState extends State<finalLogin> {
                         style: TextStyle(color: MyColors.color3),
                         textInputAction: TextInputAction.next,
                         decoration: InputDecoration(
-                          hintText: 'احمد',
+                          hintText: '',
                         ),
                         onChanged: (value) {
                           // do something
@@ -127,11 +125,10 @@ class _finalLoginState extends State<finalLogin> {
                     })),
                   ),
                   Container(
-                    alignment: Alignment.centerRight,
                     padding:
-                        const EdgeInsets.only(left: 30, right: 50, bottom: 10),
+                        const EdgeInsets.only(left: 50, right: 50, bottom: 10),
                     child: Text(
-                      "كلمة المرور",
+                      "Pass Word".tr,
                       style: Theme.of(context).textTheme.headline4,
                     ),
                   ),
@@ -148,8 +145,8 @@ class _finalLoginState extends State<finalLogin> {
                         decoration: InputDecoration(
                           suffixIcon: IconButton(
                               icon: Icon(_isObscure
-                                  ? Icons.visibility
-                                  : Icons.visibility_off),
+                                  ? Icons.visibility_off
+                                  : Icons.visibility),
                               onPressed: () {
                                 setState(() {
                                   _isObscure = !_isObscure;
@@ -211,7 +208,7 @@ class _finalLoginState extends State<finalLogin> {
                           }
                         },
                         child: Text(
-                          "سجل الآن",
+                          "Register now",
                           style: TextStyle(
                               fontSize: 13,
                               color: MyColors.color3,

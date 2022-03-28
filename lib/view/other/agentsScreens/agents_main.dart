@@ -74,7 +74,8 @@ class _agentsMainState extends State<agentsMain> {
                                 color: MyColors.color1,
                               ),
                               hintText:
-                                  'ابحث عن وكيلك المفضل أو وكيل في منطقتك'),
+                                  "search for your favorite agent in your city"
+                                      .tr),
                           onChanged: (string) {
                             _onSearchFieldChanged(string);
                           },

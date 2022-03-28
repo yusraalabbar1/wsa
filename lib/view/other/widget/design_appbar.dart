@@ -118,7 +118,7 @@ Row rowAppbar(context) {
                 }).toList(),
                 onChanged: (_) {},
               ),
-            )
+            ),
           ],
         ),
       ),

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -199,7 +200,7 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen>
                 ),
               ),
               Padding(
-                  padding: const EdgeInsets.only(right: 40),
+                  padding: const EdgeInsets.only(right: 40, left: 40),
                   child: Row(
                     children: [
                       Text(
@@ -208,6 +209,9 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen>
                           color: Colors.black,
                           fontSize: 12,
                         ),
+                      ),
+                      SizedBox(
+                        width: 20,
                       ),
                       Countdown(
                         animation: StepTween(
@@ -252,15 +256,29 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen>
                             .shake); // Triggering error shake animation
                         setState(() => hasError = true);
                       } else {
-                        setState(
-                          () {
-                            hasError = false;
+                        if (levelClock != 0) {
+                          setState(
+                            () {
+                              hasError = false;
 
-                            // snackBar("OTP Verified!!");
-                            print(userId);
-                            verifyModel(userId, currentText, context);
-                          },
-                        );
+                              // snackBar("OTP Verified!!");
+                              print(userId);
+                              verifyModel(userId, currentText, context);
+                            },
+                          );
+                        } else {
+                          AwesomeDialog(
+                                  context: context,
+                                  dialogType: DialogType.ERROR,
+                                  animType: AnimType.RIGHSLIDE,
+                                  headerAnimationLoop: true,
+                                  title: 'Error',
+                                  desc: 'time is over',
+                                  btnOkOnPress: () {},
+                                  btnOkIcon: Icons.cancel,
+                                  btnOkColor: Colors.red)
+                              .show();
+                        }
                       }
                     },
                     child: Center(

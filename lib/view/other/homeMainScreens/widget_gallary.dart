@@ -9,7 +9,7 @@ Widget widgetgallary(context) {
     return (Container(
       // color: Colors.white,
       margin: EdgeInsets.only(left: 20, right: 20),
-      height: 123,
+      height: 200,
       width: MediaQuery.of(context).size.width,
 
       child: controller.saveMapCompitition == null
@@ -23,69 +23,200 @@ Widget widgetgallary(context) {
                   child: GetBuilder<homecontroller>(builder: (controller) {
                     return (InkWell(
                       onTap: () {
-                        controller.SaveindexCopititon(index);
-                        Navigator.of(context).pushNamed("infoVote");
+                        controller.SavenameComp(
+                            controller.saveMapCompitition[index]['name']);
+                        controller.SavemonyrComp(controller
+                            .saveMapCompitition[index]['awardAmount']);
+                        controller.SavediscrpComp(controller
+                            .saveMapCompitition[index]['description']);
+                        controller.SaveidComp(controller
+                            .saveMapCompitition[index]['competitionsId']);
+                        controller.Saveamount(
+                            controller.saveMapCompitition[index]['amount']);
+                        controller.SaveIsFinishComp(
+                            controller.saveMapCompitition[index]['isFinish']);
+                        controller.SavecurrentTourName(controller
+                            .saveMapCompitition[index]['currentTourName']);
+                        controller.SavecurrentTourTimeLimit(controller
+                            .saveMapCompitition[index]['currentTourTimeLimit']);
+                        Navigator.of(context).pushNamed("infoCompet");
                       },
-                      child: Card(
-                        child: Stack(children: [
-                          Container(
-                            width: 300,
-                            decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage(
-                                        "assets/images/backCompititon.png"),
-                                    fit: BoxFit.cover)),
-                          ),
-                          Container(
-                              width: 300,
-                              height: 123,
-                              color: Color(0xff141E34).withOpacity(0.6),
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                      child: Column(
+                      child: Container(
+                          height: 200,
+                          width: 150,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              image: DecorationImage(
+                                  image: AssetImage(
+                                      "assets/images/backCompititon.png"),
+                                  fit: BoxFit.cover)),
+                          //width: 500,
+                          // width: 80,
+                          // height: 218,
+                          margin: EdgeInsets.all(10),
+                          child: Column(
+                            children: [
+                              Container(
+                                  color: Color(0xff141E34).withOpacity(0.6),
+                                  // width: MediaQuery.of(context).size.width,
+                                  height: 96,
+                                  width: 180,
+                                  child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
+                                      Container(
+                                        height: 22,
+                                        width: 44,
+                                        child: RaisedButton(
+                                          color: Colors.black,
+                                          shape: RoundedRectangleBorder(
+                                              side: BorderSide(
+                                                  color: Colors.pink,
+                                                  width: 2)),
+                                          onPressed: () {},
+                                          child: Text(
+                                            "${controller.saveMapCompitition[index]['remanningMember']}",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 9,
+                                                fontFamily: 'Almarai'),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 3,
+                                      ),
                                       Text(
-                                        "${MyCompitition[controller.indexCopititon]["name"]}",
+                                        "عدد المتسابقين المتبقي",
                                         style: TextStyle(
                                             color: Colors.white,
-                                            fontSize: 14,
+                                            fontSize: 9,
                                             fontFamily: 'Almarai'),
                                       ),
                                       SizedBox(
-                                        height: 5,
+                                        height: 3,
                                       ),
                                       Text(
-                                        "صوت الآن في المسابقة",
+                                        "${controller.saveMapCompitition[index]['name']}",
                                         style: TextStyle(
                                             color: Colors.white,
-                                            fontSize: 14,
+                                            fontSize: 12,
                                             fontFamily: 'Almarai'),
-                                      )
+                                      ),
+                                      Text(
+                                        "${controller.saveMapCompitition[index]['currentTourName']}",
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 12,
+                                            fontFamily: 'Almarai'),
+                                      ),
                                     ],
                                   )),
-                                  Expanded(
-                                      child: Column(
+                              Container(
+                                  height: 80,
+                                  width: 180,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(10),
+                                          bottomRight: Radius.circular(10)),
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              "assets/images/backCopit.PNG"),
+                                          fit: BoxFit.cover)),
+                                  // width: MediaQuery.of(context).size.width,
+                                  child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Image.asset("assets/images/trophy.png"),
-                                      SizedBox(
-                                        height: 5,
+                                      Image.asset(
+                                        "assets/images/trophy.png",
+                                        width: 31,
+                                        height: 31,
                                       ),
                                       Text(
-                                        "${MyCompitition[controller.indexCopititon]['awardAmount']}",
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 14,
-                                            fontFamily: 'Almarai'),
+                                          "${controller.saveMapCompitition[index]['awardAmount']}\$",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 9,
+                                              fontFamily: 'Almarai')),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          SizedBox(
+                                            width: 5,
+                                          ),
+                                          Column(
+                                            children: [
+                                              Container(
+                                                height: 22,
+                                                width: 44,
+                                                child: RaisedButton(
+                                                  color: Colors.black,
+                                                  shape: RoundedRectangleBorder(
+                                                      side: BorderSide(
+                                                          color: Colors.pink,
+                                                          width: 2)),
+                                                  onPressed: () {},
+                                                  child: Text(
+                                                    "${controller.saveMapCompitition[index]['amount']}\$",
+                                                    style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: 9,
+                                                        fontFamily: 'Almarai'),
+                                                  ),
+                                                ),
+                                              ),
+                                              Text(
+                                                "الإشتراك",
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 7,
+                                                    fontFamily: 'Almarai'),
+                                              ),
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            width: 5,
+                                          ),
+                                          Column(
+                                            children: [
+                                              Container(
+                                                height: 22,
+                                                width: 44,
+                                                child: RaisedButton(
+                                                  color: Colors.black,
+                                                  shape: RoundedRectangleBorder(
+                                                      side: BorderSide(
+                                                          color: Colors.pink,
+                                                          width: 2)),
+                                                  onPressed: () {},
+                                                  child: Text(
+                                                    "${controller.saveMapCompitition[index]['memberCount']}",
+                                                    style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: 9,
+                                                        fontFamily: 'Almarai'),
+                                                  ),
+                                                ),
+                                              ),
+                                              Text(
+                                                "المتسابقين",
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 7,
+                                                    fontFamily: 'Almarai'),
+                                              ),
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            width: 5,
+                                          ),
+                                        ],
                                       )
                                     ],
                                   ))
-                                ],
-                              ))
-                        ]),
-                      ),
+                            ],
+                          )),
                     ));
                   }),
                 );

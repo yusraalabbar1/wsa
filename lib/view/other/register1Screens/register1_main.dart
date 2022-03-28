@@ -56,7 +56,7 @@ Widget register2(context) {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Text("رصيد محفظتك ",
+                  Text("Your walet balance".tr,
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
@@ -71,7 +71,7 @@ Widget register2(context) {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Text("أرباح التسويق",
+                  Text("Marketing Profits".tr,
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
@@ -120,7 +120,7 @@ Widget register1(context) {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Text("رصيد محفظتك ",
+            Text("Your walet balance".tr,
                 style: TextStyle(
                     color: Colors.white, fontSize: 20, fontFamily: 'Almarai')),
             Text(balanceForUser.toString(),

@@ -23,6 +23,7 @@ var lastNamepref;
 var phonepref;
 var passPref;
 var isLogin;
+var imageProfileSavepref;
 Future send_inf_login(email, password, context) async {
   homecontroller controller = Get.put(homecontroller());
   print("========information in function==========");
@@ -111,6 +112,14 @@ Future send_inf_login(email, password, context) async {
       prescity.setInt('cityId', dataloginresult["cityId"]);
       cityIdSavepref = prescity.getInt('cityId');
       controller.SavecityId(cityIdSavepref);
+      /////////////////////////////////
+      print(dataloginresult["imageProfile"]);
+      SharedPreferences presimageProfile =
+          await SharedPreferences.getInstance();
+      presimageProfile.setString(
+          'imageProfile', dataloginresult["imageProfile"]);
+      imageProfileSavepref = presimageProfile.getString('imageProfile');
+      controller.SaveimageProfile(imageProfileSavepref);
 /////////////////////////////////
       print(dataloginresult["telephoneNumber"]);
       SharedPreferences presphone = await SharedPreferences.getInstance();

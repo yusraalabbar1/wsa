@@ -7,6 +7,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wst/control/homecontroller.dart';
 import 'package:wst/model/modeApi/get_user_profile_withmedia.dart';
+import 'package:wst/model/modeApi/image_upload.dart';
 import 'package:wst/model/modeApi/login_model.dart';
 import 'package:wst/utils/constant/color.dart';
 import 'package:wst/view/auth/widget/themeWst.dart';
@@ -46,11 +47,10 @@ class _sittingProfileState extends State<sittingProfile> {
   void initState() {
     super.initState();
     getpref();
-    getUserProfilWithMedia();
   }
 
   homecontroller controller = Get.put(homecontroller());
-  PickedFile? imageFile = null;
+
   Future<void> _showChoiceDialog(BuildContext context) {
     return showDialog(
         context: context,
@@ -98,18 +98,34 @@ class _sittingProfileState extends State<sittingProfile> {
         });
   }
 
+  var _image;
   void _openGallery(BuildContext context) async {
-    final pickedFile = await ImagePicker().getImage(
-      source: ImageSource.gallery,
-    );
+    ImagePicker picker = ImagePicker();
+    XFile? imageNameFile = await picker.pickImage(source: ImageSource.gallery);
     setState(() {
-      if (pickedFile != null) {
-        imageFile = pickedFile;
-        controller.SavePathImage(imageFile);
+      if (imageNameFile != null) {
+        _image = File(imageNameFile.path);
+        controller.SavePathImage(imageNameFile);
+        uploadImage(imageNameFile, _image.path);
       } else {
         print("not select image");
       }
     });
+    // final pickedFile = await ImagePicker().getImage(
+    //   source: ImageSource.gallery,
+    // );
+    // // final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+    // setState(() {
+    //   if (pickedFile != null) {
+    //     imageFile = pickedFile;
+    //     controller.SavePathImage(imageFile);
+    //     String fileName = imageFile!.path.split('/').last;
+    //     print(fileName);
+    //     uploadImage(pickedFile, imageFile!.path);
+    //   } else {
+    //     print("not select image");
+    //   }
+    // });
 
     Navigator.pop(context);
   }
@@ -121,6 +137,9 @@ class _sittingProfileState extends State<sittingProfile> {
     setState(() {
       imageFile = pickedFile!;
       controller.SavePathImage(imageFile);
+      String fileName = imageFile!.path.split('/').last;
+      print(fileName);
+      uploadImage(fileName, imageFile!.path);
     });
     Navigator.pop(context);
   }
@@ -141,7 +160,7 @@ class _sittingProfileState extends State<sittingProfile> {
             rowAppbar(context),
             Container(
               margin: EdgeInsets.all(15),
-              height: 480,
+              height: 450,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                   gradient: LinearGradient(
@@ -225,55 +244,7 @@ class _sittingProfileState extends State<sittingProfile> {
                                 )),
                           ],
                         ),
-                        Row(
-                          children: [
-                            Expanded(
-                                child: Container(
-                              alignment: Alignment.topRight,
-                              child: Text("الإسم الكامل",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 13,
-                                      fontFamily: 'Almarai')),
-                            )),
-                            Expanded(
-                                child: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Container(
-                                  alignment: Alignment.topLeft,
-                                  child: Text(
-                                      controller.saveFirstName == null
-                                          ? "name1"
-                                          : controller.saveFirstName,
-                                      style: TextStyle(
-                                          color: Color(0xff707070),
-                                          fontSize: 13,
-                                          fontFamily: 'Almarai')),
-                                ),
-                                IconButton(
-                                    onPressed: () {},
-                                    icon: Icon(
-                                      Icons.navigate_next,
-                                      color: Colors.white,
-                                    ))
-                              ],
-                            ))
-                          ],
-                        ),
-                        Container(
-                          height: 2,
-                          decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                  begin: Alignment.centerLeft,
-                                  end: Alignment.centerRight,
-                                  colors: [
-                                    Color.fromARGB(255, 32, 53, 104),
-                                    Color(0xff414D72)
-                                  ]),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
-                        ),
+
                         Row(
                           children: [
                             Expanded(
@@ -328,7 +299,7 @@ class _sittingProfileState extends State<sittingProfile> {
                             Expanded(
                                 child: Container(
                               alignment: Alignment.topRight,
-                              child: Text("الدولة",
+                              child: Text("الاسم الأول",
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 13,
@@ -341,10 +312,9 @@ class _sittingProfileState extends State<sittingProfile> {
                                 Container(
                                   alignment: Alignment.topLeft,
                                   child: Text(
-                                      controller.saveCountryid.toString() ==
-                                              null
+                                      controller.saveFirstName == null
                                           ? ""
-                                          : controller.saveCountryid.toString(),
+                                          : controller.saveFirstName.toString(),
                                       style: TextStyle(
                                           color: Color(0xff707070),
                                           fontSize: 13,
@@ -360,6 +330,141 @@ class _sittingProfileState extends State<sittingProfile> {
                             ))
                           ],
                         ),
+                        Container(
+                          height: 2,
+                          decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                  begin: Alignment.centerLeft,
+                                  end: Alignment.centerRight,
+                                  colors: [
+                                    Color.fromARGB(255, 32, 53, 104),
+                                    Color(0xff414D72)
+                                  ]),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20))),
+                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                                child: Container(
+                              alignment: Alignment.topRight,
+                              child: Text("اسم الأب",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 13,
+                                      fontFamily: 'Almarai')),
+                            )),
+                            Expanded(
+                                child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Container(
+                                  alignment: Alignment.topLeft,
+                                  child: Text(
+                                      controller.saveMidName == null
+                                          ? ""
+                                          : controller.saveFirstName.toString(),
+                                      style: TextStyle(
+                                          color: Color(0xff707070),
+                                          fontSize: 13,
+                                          fontFamily: 'Almarai')),
+                                ),
+                                IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(
+                                      Icons.navigate_next,
+                                      color: Colors.white,
+                                    ))
+                              ],
+                            ))
+                          ],
+                        ),
+                        Container(
+                          height: 2,
+                          decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                  begin: Alignment.centerLeft,
+                                  end: Alignment.centerRight,
+                                  colors: [
+                                    Color.fromARGB(255, 32, 53, 104),
+                                    Color(0xff414D72)
+                                  ]),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20))),
+                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                                child: Container(
+                              alignment: Alignment.topRight,
+                              child: Text("الكنية",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 13,
+                                      fontFamily: 'Almarai')),
+                            )),
+                            Expanded(
+                                child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Container(
+                                  alignment: Alignment.topLeft,
+                                  child: Text(
+                                      controller.saveLastName == null
+                                          ? ""
+                                          : controller.saveLastName.toString(),
+                                      style: TextStyle(
+                                          color: Color(0xff707070),
+                                          fontSize: 13,
+                                          fontFamily: 'Almarai')),
+                                ),
+                                IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(
+                                      Icons.navigate_next,
+                                      color: Colors.white,
+                                    ))
+                              ],
+                            ))
+                          ],
+                        ),
+                        // Row(
+                        //   children: [
+                        //     Expanded(
+                        //         child: Container(
+                        //       alignment: Alignment.topRight,
+                        //       child: Text("الدولة",
+                        //           style: TextStyle(
+                        //               color: Colors.white,
+                        //               fontSize: 13,
+                        //               fontFamily: 'Almarai')),
+                        //     )),
+                        //     Expanded(
+                        //         child: Row(
+                        //       mainAxisAlignment: MainAxisAlignment.end,
+                        //       children: [
+                        //         Container(
+                        //           alignment: Alignment.topLeft,
+                        //           child: Text(
+                        //               controller.saveCountryid.toString() ==
+                        //                       null
+                        //                   ? ""
+                        //                   : controller.saveCountryid.toString(),
+                        //               style: TextStyle(
+                        //                   color: Color(0xff707070),
+                        //                   fontSize: 13,
+                        //                   fontFamily: 'Almarai')),
+                        //         ),
+                        //         IconButton(
+                        //             onPressed: () {},
+                        //             icon: Icon(
+                        //               Icons.navigate_next,
+                        //               color: Colors.white,
+                        //             ))
+                        //       ],
+                        //     ))
+                        //   ],
+                        // ),
                         Container(
                           height: 2,
                           decoration: BoxDecoration(
@@ -422,101 +527,66 @@ class _sittingProfileState extends State<sittingProfile> {
                               borderRadius:
                                   BorderRadius.all(Radius.circular(20))),
                         ),
-                        Row(
-                          children: [
-                            Expanded(
-                                child: Container(
-                              alignment: Alignment.topRight,
-                              child: Text("البريد الإلكتروني",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 13,
-                                      fontFamily: 'Almarai')),
-                            )),
-                            Expanded(
-                                child: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Container(
-                                  alignment: Alignment.topLeft,
-                                  child: Text(
-                                      controller.userName == null
-                                          ? ""
-                                          : controller.userName + "@gmail.com",
-                                      style: TextStyle(
-                                          color: Color(0xff707070),
-                                          fontSize: 13,
-                                          fontFamily: 'Almarai')),
-                                ),
-                                IconButton(
-                                    onPressed: () {},
-                                    icon: Icon(
-                                      Icons.navigate_next,
-                                      color: Colors.white,
-                                    ))
-                              ],
-                            ))
-                          ],
-                        ),
-                        Container(
-                          height: 2,
-                          decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                  begin: Alignment.centerLeft,
-                                  end: Alignment.centerRight,
-                                  colors: [
-                                    Color.fromARGB(255, 32, 53, 104),
-                                    Color(0xff414D72)
-                                  ]),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
-                        ),
-                        Row(
-                          children: [
-                            Expanded(
-                                child: Container(
-                              alignment: Alignment.topRight,
-                              child: Text("رقم الواتساب",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 13,
-                                      fontFamily: 'Almarai')),
-                            )),
-                            Expanded(
-                                child: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Container(
-                                  alignment: Alignment.topLeft,
-                                  child: Text("رابط",
-                                      style: TextStyle(
-                                          color: Color(0xff707070),
-                                          fontSize: 13,
-                                          fontFamily: 'Almarai')),
-                                ),
-                                IconButton(
-                                    onPressed: () {},
-                                    icon: Icon(
-                                      Icons.navigate_next,
-                                      color: Colors.white,
-                                    ))
-                              ],
-                            ))
-                          ],
-                        ),
-                        Container(
-                          height: 2,
-                          decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                  begin: Alignment.centerLeft,
-                                  end: Alignment.centerRight,
-                                  colors: [
-                                    Color.fromARGB(255, 32, 53, 104),
-                                    Color(0xff414D72)
-                                  ]),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
-                        ),
+
+                        // Container(
+                        //   height: 2,
+                        //   decoration: BoxDecoration(
+                        //       gradient: LinearGradient(
+                        //           begin: Alignment.centerLeft,
+                        //           end: Alignment.centerRight,
+                        //           colors: [
+                        //             Color.fromARGB(255, 32, 53, 104),
+                        //             Color(0xff414D72)
+                        //           ]),
+                        //       borderRadius:
+                        //           BorderRadius.all(Radius.circular(20))),
+                        // ),
+                        // Row(
+                        //   children: [
+                        //     Expanded(
+                        //         child: Container(
+                        //       alignment: Alignment.topRight,
+                        //       child: Text("رقم الواتساب",
+                        //           style: TextStyle(
+                        //               color: Colors.white,
+                        //               fontSize: 13,
+                        //               fontFamily: 'Almarai')),
+                        //     )),
+                        //     Expanded(
+                        //         child: Row(
+                        //       mainAxisAlignment: MainAxisAlignment.end,
+                        //       children: [
+                        //         Container(
+                        //           alignment: Alignment.topLeft,
+                        //           child: Text("رابط",
+                        //               style: TextStyle(
+                        //                   color: Color(0xff707070),
+                        //                   fontSize: 13,
+                        //                   fontFamily: 'Almarai')),
+                        //         ),
+                        //         IconButton(
+                        //             onPressed: () {},
+                        //             icon: Icon(
+                        //               Icons.navigate_next,
+                        //               color: Colors.white,
+                        //             ))
+                        //       ],
+                        //     ))
+                        //   ],
+                        // ),
+                        // Container(
+                        //   height: 2,
+                        //   decoration: BoxDecoration(
+                        //       gradient: LinearGradient(
+                        //           begin: Alignment.centerLeft,
+                        //           end: Alignment.centerRight,
+                        //           colors: [
+                        //             Color.fromARGB(255, 32, 53, 104),
+                        //             Color(0xff414D72)
+                        //           ]),
+                        //       borderRadius:
+                        //           BorderRadius.all(Radius.circular(20))),
+                        // ),
                         SizedBox(
                           height: 30,
                         ),
@@ -536,7 +606,7 @@ class _sittingProfileState extends State<sittingProfile> {
             ),
             Container(
                 margin: EdgeInsets.all(15),
-                height: 417,
+                height: 300,
                 width: MediaQuery.of(context).size.width,
                 child: Stack(
                   children: [

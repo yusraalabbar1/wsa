@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:wst/utils/constant/color.dart';
 import 'package:wst/view/auth/widget/themeWst.dart';
 
@@ -28,7 +29,7 @@ class _resetCodePasswordState extends State<resetCodePassword> {
                   padding:
                       const EdgeInsets.only(left: 30, right: 50, bottom: 10),
                   child: Text(
-                    "لقد ارسلنا رسالة لك فيها رمز اعادة التعيين ",
+                    "we have sent you a text message with the reset code".tr,
                     style: Theme.of(context).textTheme.headline4,
                   ),
                 ),
@@ -37,7 +38,7 @@ class _resetCodePasswordState extends State<resetCodePassword> {
                   padding:
                       const EdgeInsets.only(left: 30, right: 50, bottom: 10),
                   child: Text(
-                    "رمز اعادة التعيين",
+                    "Reset code".tr,
                     style: Theme.of(context).textTheme.headline4,
                   ),
                 ),
@@ -56,8 +57,8 @@ class _resetCodePasswordState extends State<resetCodePassword> {
                   ),
                 ),
                 Center(
-                  child: buttonStart(MyColors.color1, MyColors.color1, "تأكيد",
-                      MyColors.color3, context, "oldLogin"),
+                  child: buttonStart(MyColors.color1, MyColors.color1,
+                      "confirm".tr, MyColors.color3, context, "oldLogin"),
                 ),
               ],
             ),

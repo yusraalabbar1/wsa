@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wst/control/homecontroller.dart';
 import 'package:wst/model/modeApi/login_model.dart';
 import 'package:wst/thems.dart';
+import 'package:wst/translation/translation.dart';
 import 'package:wst/view/auth/page/forgetPassword/cofirm_code.dart';
 import 'package:wst/view/auth/page/signup/complet_signup.dart';
 import 'package:wst/view/auth/page/signup/final_signup.dart';
@@ -17,11 +18,14 @@ import 'package:wst/view/auth/page/signup/signup.dart';
 import 'package:wst/view/auth/page/start_page.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:wst/view/init_page.dart';
+import 'package:wst/view/lang_page.dart';
 import 'package:wst/view/other/agentsScreens/info_agent.dart';
 import 'package:wst/view/other/competitionsScreens/competitions_main.dart';
 import 'package:wst/view/other/competitionsScreens/complet_person_sub.dart';
 import 'package:wst/view/other/competitionsScreens/info_compit.dart';
 import 'package:wst/view/other/competitionsScreens/person_sub.dart';
+import 'package:wst/view/other/gaust/gaust.dart';
 import 'package:wst/view/other/homeMainScreens/recive/chois_receive.dart';
 import 'package:wst/view/other/homeMainScreens/send/complet_send_money.dart';
 import 'package:wst/view/other/homeMainScreens/details_winner.dart';
@@ -49,9 +53,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: isLogin == true ? homePage() : startPage(),
+      home: isLogin == true ? homePage() : initPage(),
       theme: CustomTheme.lightTheme,
       routes: {
+        "initPage": ((context) => initPage()),
+        "langPage": ((context) => langPage()),
         "startPage": ((context) => startPage()),
         "login": ((context) => login()),
         "signup": ((context) => signup()),
@@ -84,37 +90,41 @@ class MyApp extends StatelessWidget {
         "gallary": ((context) => gallary()),
         "register1Main": ((context) => register1Main()),
         "question": ((context) => const questionComm()),
+        "gaust": ((context) => gaust()),
       },
-      supportedLocales: [
-        const Locale('en'),
-        const Locale('ar'),
-        const Locale('es'),
-        const Locale('el'),
-        const Locale('et'),
-        const Locale('nb'),
-        const Locale('nn'),
-        const Locale('pl'),
-        const Locale('pt'),
-        const Locale('ru'),
-        const Locale('hi'),
-        const Locale('ne'),
-        const Locale('uk'),
-        const Locale('hr'),
-        const Locale('tr'),
-        const Locale.fromSubtags(
-            languageCode: 'zh',
-            scriptCode: 'Hans'), // Generic Simplified Chinese 'zh_Hans'
-        const Locale.fromSubtags(
-            languageCode: 'zh',
-            scriptCode: 'Hant'), // Generic traditional Chinese 'zh_Hant'
-      ],
-      localizationsDelegates: [
-        CountryLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ],
-      locale: Locale('ar'),
+      // supportedLocales: [
+      //   const Locale('en'),
+      //   const Locale('ar'),
+      //   const Locale('es'),
+      //   const Locale('el'),
+      //   const Locale('et'),
+      //   const Locale('nb'),
+      //   const Locale('nn'),
+      //   const Locale('pl'),
+      //   const Locale('pt'),
+      //   const Locale('ru'),
+      //   const Locale('hi'),
+      //   const Locale('ne'),
+      //   const Locale('uk'),
+      //   const Locale('hr'),
+      //   const Locale('tr'),
+      //   const Locale.fromSubtags(
+      //       languageCode: 'zh',
+      //       scriptCode: 'Hans'), // Generic Simplified Chinese 'zh_Hans'
+      //   const Locale.fromSubtags(
+      //       languageCode: 'zh',
+      //       scriptCode: 'Hant'), // Generic traditional Chinese 'zh_Hant'
+      // ],
+      // localizationsDelegates: [
+      //   CountryLocalizations.delegate,
+      //   GlobalMaterialLocalizations.delegate,
+      //   GlobalCupertinoLocalizations.delegate,
+      //   GlobalWidgetsLocalizations.delegate,
+      // ],
+      // locale: Locale('ar'),
+      translations: Translation(),
+      locale: Locale('en'),
+      fallbackLocale: Locale('en'),
     );
   }
 

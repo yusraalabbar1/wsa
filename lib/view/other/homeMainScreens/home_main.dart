@@ -47,9 +47,9 @@ class _homeMainState extends State<homeMain> {
             rowAppbar(context),
             widgetBalance(context),
             Container(
-              margin: EdgeInsets.only(right: 20),
+              margin: EdgeInsets.only(right: 20, left: 20),
               child: Text(
-                "المسابقات",
+                "Competitions".tr,
                 style: TextStyle(
                     color: Colors.white, fontSize: 17, fontFamily: 'Almarai'),
               ),
@@ -61,7 +61,7 @@ class _homeMainState extends State<homeMain> {
             Container(
               margin: EdgeInsets.all(20),
               child: Text(
-                "الرابحين",
+                "Winners".tr,
                 style: TextStyle(
                     color: Colors.white, fontSize: 17, fontFamily: 'Almarai'),
               ),
