@@ -1,5 +1,5 @@
 import 'dart:io';
-
+import 'package:flutter/services.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,6 +8,7 @@ import 'package:wst/control/homecontroller.dart';
 import 'package:wst/model/modeApi/login_model.dart';
 import 'package:wst/model/modeApi/update_codeMarket.dart';
 import 'package:wst/utils/constant/color.dart';
+import 'package:wst/view/other/setting/profile/dialogMedia.dart';
 
 Widget drawerMain(context) {
   return Container(
@@ -145,6 +146,30 @@ Widget drawerMain(context) {
             ),
           ),
           InkWell(
+            onTap: () async {
+              await Clipboard.setData(
+                  ClipboardData(text: controller.savemarketingCodeeSavepref));
+            },
+            child: Row(
+              children: [
+                Container(
+                  margin: EdgeInsets.all(10),
+                  child: Icon(
+                    Icons.copy,
+                    size: 20,
+                    color: Colors.white,
+                  ),
+                ),
+                Container(
+                    child: Text(" نسخ الكود التسويقي",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontFamily: 'Almarai')))
+              ],
+            ),
+          ),
+          InkWell(
             onTap: () {
               Navigator.of(context).pushNamed("question");
             },
@@ -169,7 +194,8 @@ Widget drawerMain(context) {
           ),
           InkWell(
             onTap: () {
-              launch("00221778821171");
+              // launch("00221778821171");
+              dialogForMediae(context);
             },
             child: Row(
               children: [
@@ -182,7 +208,7 @@ Widget drawerMain(context) {
                   ),
                 ),
                 Container(
-                    child: Text("تواصل معنا على الواتساب",
+                    child: Text("تواصل معنا ",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 14,

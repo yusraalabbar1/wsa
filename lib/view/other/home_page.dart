@@ -33,8 +33,8 @@ homecontroller controller = Get.put(homecontroller());
 final List<Widget> widgetOptions = <Widget>[
   agentsMain(),
   competitionsMain(),
-  homeMain(),
   register1Main(),
+  homeMain(),
 ];
 
 class _homePageState extends State<homePage> {
@@ -61,7 +61,7 @@ class _homePageState extends State<homePage> {
   homecontroller controller = Get.put(homecontroller());
   var lim;
 
-  int _selectedIndex = 2;
+  int _selectedIndex = 3;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -79,7 +79,7 @@ class _homePageState extends State<homePage> {
       ),
       bottomNavigationBar: CurvedNavigationBar(
         key: _bottomNavigationKey,
-        index: 2,
+        index: 3,
         height: 60.0,
         items: <Widget>[
           InkWell(
@@ -96,13 +96,7 @@ class _homePageState extends State<homePage> {
               height: 28,
             ),
           ),
-          InkWell(
-            child: Image.asset(
-              "assets/images/home.png",
-              width: 28,
-              height: 28,
-            ),
-          ),
+
           // InkWell(
           //   child: Image.asset(
           //     "assets/images/register2.png",
@@ -113,6 +107,13 @@ class _homePageState extends State<homePage> {
           InkWell(
             child: Image.asset(
               "assets/images/register1.png",
+              width: 28,
+              height: 28,
+            ),
+          ),
+          InkWell(
+            child: Image.asset(
+              "assets/images/home.png",
               width: 28,
               height: 28,
             ),

@@ -128,7 +128,7 @@ class _sendMonyState extends State<sendMony> {
                                                   left: 30, right: 30),
                                               alignment: Alignment.centerRight,
                                               child: Text(
-                                                "unique code المستقبل",
+                                                "أدخل كود التحويل الخاص بالمستقبل",
                                                 style: TextStyle(
                                                     color: MyColors.color3,
                                                     fontSize: 14,

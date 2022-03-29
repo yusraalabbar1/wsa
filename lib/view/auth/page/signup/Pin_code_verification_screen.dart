@@ -256,16 +256,13 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen>
                             .shake); // Triggering error shake animation
                         setState(() => hasError = true);
                       } else {
+                        print(levelClock);
                         if (levelClock != 0) {
-                          setState(
-                            () {
-                              hasError = false;
+                          hasError = false;
 
-                              // snackBar("OTP Verified!!");
-                              print(userId);
-                              verifyModel(userId, currentText, context);
-                            },
-                          );
+                          // snackBar("OTP Verified!!");
+                          print(userId);
+                          verifyModel(userId, currentText, context);
                         } else {
                           AwesomeDialog(
                                   context: context,

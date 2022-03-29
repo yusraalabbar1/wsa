@@ -120,8 +120,10 @@ class _competitionsMainState extends State<competitionsMain> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     image: DecorationImage(
-                        image: AssetImage("assets/images/backCompititon.png"),
+                        image: NetworkImage(
+                            "http://212.24.108.54/wsaAdmin/images/${foundCompitition[index]['imageUrl']}"),
                         fit: BoxFit.cover)),
+
                 //width: 500,
                 // width: 80,
                 // height: 218,
@@ -313,8 +315,8 @@ class _competitionsMainState extends State<competitionsMain> {
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                            image:
-                                AssetImage("assets/images/backCompititon.png"),
+                            image: NetworkImage(
+                                "http://212.24.108.54/wsaAdmin/images/${foundCompitition[index]['imageUrl']}"),
                             fit: BoxFit.cover)),
                   ),
                   Container(

@@ -47,9 +47,15 @@ class homecontroller extends GetxController {
   var saveUsersIsLogin;
   var saveMemberId;
   var saveimageProfile;
-
+  var savemarketingCodeeSavepref;
   var savebalanceForUser;
   /********************************************* */
+  void SavemarketingCodeeSavepref(string) {
+    print("control value savemarketingCodeeSavepref is:");
+    savemarketingCodeeSavepref = string;
+    update();
+  }
+
   void SavebalanceForUser(string) {
     print("control value savebalanceForUser is:");
     savebalanceForUser = string;

@@ -106,7 +106,7 @@ class _sittingProfileState extends State<sittingProfile> {
       if (imageNameFile != null) {
         _image = File(imageNameFile.path);
         controller.SavePathImage(imageNameFile);
-        uploadImage(imageNameFile, _image.path);
+        uploadImage(imageNameFile);
       } else {
         print("not select image");
       }
@@ -131,15 +131,16 @@ class _sittingProfileState extends State<sittingProfile> {
   }
 
   void _openCamera(BuildContext context) async {
-    final pickedFile = await ImagePicker().getImage(
-      source: ImageSource.camera,
-    );
+    ImagePicker picker = ImagePicker();
+    XFile? imageNameFile = await picker.pickImage(source: ImageSource.camera);
     setState(() {
-      imageFile = pickedFile!;
-      controller.SavePathImage(imageFile);
-      String fileName = imageFile!.path.split('/').last;
-      print(fileName);
-      uploadImage(fileName, imageFile!.path);
+      if (imageNameFile != null) {
+        _image = File(imageNameFile.path);
+        controller.SavePathImage(imageNameFile);
+        uploadImage(imageNameFile);
+      } else {
+        print("not select image");
+      }
     });
     Navigator.pop(context);
   }

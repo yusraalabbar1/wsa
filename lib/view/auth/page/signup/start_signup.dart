@@ -61,84 +61,88 @@ class _loginState extends State<login> {
                   ),
 
                   // ),
-                  Center(
-                    child: Container(
-                      height: 65,
-                      width: 330,
-                      margin: EdgeInsets.only(bottom: 15),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
-                        color: MyColors.color2,
-                        boxShadow: [
-                          BoxShadow(spreadRadius: 0.8),
-                        ],
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          GetBuilder<homecontroller>(builder: (controller) {
-                            return (Expanded(
-                              child: DropdownButtonHideUnderline(
-                                child: ButtonTheme(
-                                  alignedDropdown: true,
-                                  child: DropdownButton<dynamic>(
-                                    isDense: true,
-                                    dropdownColor: MyColors.color2,
-                                    hint: Text(
-                                      "Select country".tr,
-                                      style: TextStyle(
-                                        color: MyColors.color4,
-                                      ),
-                                    ),
-                                    value: _selected,
-                                    onChanged: (newValue) {
-                                      setState(() {
-                                        _selected = newValue!;
-                                      });
-                                      controller.SaveCountryid(
-                                          int.parse(_selected));
-                                      codeotp = myJsonCountry
-                                          .map((Map map) => map["countryCode"])
-                                          .toList();
-                                      controller.SaveCountryCode(int.parse(
-                                          codeotp[int.parse(_selected) - 1]));
-                                      countryname = myJsonCountry
-                                          .map(
-                                              (Map map) => map["countryDescAr"])
-                                          .toList();
-                                      controller.SaveCountryName(countryname[
-                                          int.parse(_selected) - 1]);
-                                    },
-                                    items: myJsonCountry.map((Map map) {
-                                      return DropdownMenuItem<dynamic>(
-                                        value: map["id"].toString(),
-                                        child: Row(
-                                          children: <Widget>[
-                                            Container(
-                                                child: Image.network(
-                                              "http://212.24.108.54/wsaAdmin/images/" +
-                                                  map["countryFlag"],
-                                              height: 20,
-                                              width: 20,
-                                            )),
-                                            Container(
-                                                margin: const EdgeInsets.only(
-                                                    right: 10, left: 10),
-                                                child: Text(
-                                                    map["countryDescAr"],
-                                                    style: const TextStyle(
-                                                      color: MyColors.color3,
-                                                    ))),
-                                          ],
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(left: 30, right: 30, bottom: 10),
+                    child: Center(
+                      child: Container(
+                        height: 65,
+                        width: 330,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          color: MyColors.color2,
+                          boxShadow: [
+                            BoxShadow(spreadRadius: 0.8),
+                          ],
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            GetBuilder<homecontroller>(builder: (controller) {
+                              return (Expanded(
+                                child: DropdownButtonHideUnderline(
+                                  child: ButtonTheme(
+                                    alignedDropdown: true,
+                                    child: DropdownButton<dynamic>(
+                                      isDense: true,
+                                      dropdownColor: MyColors.color2,
+                                      hint: Text(
+                                        "Select country".tr,
+                                        style: TextStyle(
+                                          color: MyColors.color4,
                                         ),
-                                      );
-                                    }).toList(),
+                                      ),
+                                      value: _selected,
+                                      onChanged: (newValue) {
+                                        setState(() {
+                                          _selected = newValue!;
+                                        });
+                                        controller.SaveCountryid(
+                                            int.parse(_selected));
+                                        codeotp = myJsonCountry
+                                            .map(
+                                                (Map map) => map["countryCode"])
+                                            .toList();
+                                        controller.SaveCountryCode(int.parse(
+                                            codeotp[int.parse(_selected) - 1]));
+                                        countryname = myJsonCountry
+                                            .map((Map map) =>
+                                                map["countryDescAr"])
+                                            .toList();
+                                        controller.SaveCountryName(countryname[
+                                            int.parse(_selected) - 1]);
+                                      },
+                                      items: myJsonCountry.map((Map map) {
+                                        return DropdownMenuItem<dynamic>(
+                                          value: map["id"].toString(),
+                                          child: Row(
+                                            children: <Widget>[
+                                              Container(
+                                                  child: Image.network(
+                                                "http://212.24.108.54/wsaAdmin/images/" +
+                                                    map["countryFlag"],
+                                                height: 20,
+                                                width: 20,
+                                              )),
+                                              Container(
+                                                  margin: const EdgeInsets.only(
+                                                      right: 10, left: 10),
+                                                  child: Text(
+                                                      map["countryDescAr"],
+                                                      style: const TextStyle(
+                                                        color: MyColors.color3,
+                                                      ))),
+                                            ],
+                                          ),
+                                        );
+                                      }).toList(),
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ));
-                          }),
-                        ],
+                              ));
+                            }),
+                          ],
+                        ),
                       ),
                     ),
                   ),

@@ -94,27 +94,27 @@ class _completSignUpState extends State<completSignUp> {
                       ));
                     })),
                   ),
-                  Row(
-                    children: [
-                      Expanded(
-                        flex: 1,
-                        child: Column(
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.only(bottom: 10),
-                              child: Text(
-                                "Country".tr,
-                                style: Theme.of(context).textTheme.headline4,
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(left: 30, right: 30, bottom: 10),
+                    child: Row(
+                      children: [
+                        // Expanded(flex: 1, child: Text("")),
+                        Expanded(
+                          flex: 4,
+                          child: Column(
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.only(bottom: 10),
+                                child: Text(
+                                  "Country".tr,
+                                  style: Theme.of(context).textTheme.headline4,
+                                ),
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 30, right: 30, bottom: 10),
-                              child: Center(
+                              Center(
                                 child: Container(
                                   height: 65,
                                   width: 250,
-                                  margin: EdgeInsets.only(bottom: 15),
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(30),
                                     color: MyColors.color2,
@@ -123,9 +123,7 @@ class _completSignUpState extends State<completSignUp> {
                                     ],
                                   ),
                                   child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: <Widget>[
+                                    children: [
                                       Expanded(child:
                                           GetBuilder<homecontroller>(
                                               builder: (controller) {
@@ -146,37 +144,35 @@ class _completSignUpState extends State<completSignUp> {
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                      Expanded(
-                          flex: 1,
-                          child: Column(
-                            children: [
-                              Container(
-                                padding: const EdgeInsets.only(bottom: 10),
-                                child: Text(
-                                  "City".tr,
-                                  style: Theme.of(context).textTheme.headline4,
+                        Expanded(flex: 1, child: Text("")),
+                        Expanded(
+                            flex: 4,
+                            child: Column(
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.only(bottom: 10),
+                                  child: Text(
+                                    "City".tr,
+                                    style:
+                                        Theme.of(context).textTheme.headline4,
+                                  ),
                                 ),
-                              ),
-                              Container(
-                                height: 65,
-                                width: 250,
-                                margin: EdgeInsets.only(
-                                    bottom: 15, right: 30, left: 30),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(30),
-                                  color: MyColors.color2,
-                                  boxShadow: [
-                                    BoxShadow(spreadRadius: 0.8),
-                                  ],
-                                ),
-                                child: GetBuilder<homecontroller>(
-                                    builder: (controller) {
-                                  return (Expanded(
-                                    child: DropdownButtonHideUnderline(
+                                Container(
+                                  height: 65,
+                                  width: 250,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(30),
+                                    color: MyColors.color2,
+                                    boxShadow: [
+                                      BoxShadow(spreadRadius: 0.8),
+                                    ],
+                                  ),
+                                  child: GetBuilder<homecontroller>(
+                                      builder: (controller) {
+                                    return (DropdownButtonHideUnderline(
                                       child: ButtonTheme(
                                         alignedDropdown: true,
                                         child: DropdownButton<dynamic>(
@@ -224,13 +220,14 @@ class _completSignUpState extends State<completSignUp> {
                                           }).toList(),
                                         ),
                                       ),
-                                    ),
-                                  ));
-                                }),
-                              ),
-                            ],
-                          ))
-                    ],
+                                    ));
+                                  }),
+                                ),
+                              ],
+                            )),
+                        // Expanded(flex: 1, child: Text("")),
+                      ],
+                    ),
                   ),
                   Container(
                     padding:

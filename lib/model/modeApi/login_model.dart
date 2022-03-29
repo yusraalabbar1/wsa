@@ -24,6 +24,7 @@ var phonepref;
 var passPref;
 var isLogin;
 var imageProfileSavepref;
+var marketingCodeeSavepref;
 Future send_inf_login(email, password, context) async {
   homecontroller controller = Get.put(homecontroller());
   print("========information in function==========");
@@ -120,7 +121,13 @@ Future send_inf_login(email, password, context) async {
           'imageProfile', dataloginresult["imageProfile"]);
       imageProfileSavepref = presimageProfile.getString('imageProfile');
       controller.SaveimageProfile(imageProfileSavepref);
+      /////////////////////////////////
+      SharedPreferences presMarket = await SharedPreferences.getInstance();
+      presMarket.setString('marketingCode', dataloginresult["marketingCode"]);
+      marketingCodeeSavepref = presMarket.getString('marketingCode');
+      controller.SavemarketingCodeeSavepref(marketingCodeeSavepref);
 /////////////////////////////////
+      ///
       print(dataloginresult["telephoneNumber"]);
       SharedPreferences presphone = await SharedPreferences.getInstance();
       presphone.setString(

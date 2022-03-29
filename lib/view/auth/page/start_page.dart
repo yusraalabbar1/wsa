@@ -53,7 +53,7 @@ class _startPageState extends State<startPage> {
     // TODO: implement initState
     super.initState();
     print("start page:************");
-
+    myJsonCountry = [];
     getCoutery();
     getSettingSpictimeOtp();
     getSettingSpicSocialMediaFacebook();

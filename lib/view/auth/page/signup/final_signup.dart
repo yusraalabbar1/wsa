@@ -161,8 +161,8 @@ class _finalLoginState extends State<finalLogin> {
                           if (text!.length > 40) {
                             return "can not enter bigest than 40";
                           }
-                          if (text.length < 2) {
-                            return "can not enter less than 2";
+                          if (text.length < 5) {
+                            return "can not enter less than 5";
                           }
                           return null;
                         },
@@ -208,7 +208,7 @@ class _finalLoginState extends State<finalLogin> {
                           }
                         },
                         child: Text(
-                          "Register now",
+                          "Register now".tr,
                           style: TextStyle(
                               fontSize: 13,
                               color: MyColors.color3,

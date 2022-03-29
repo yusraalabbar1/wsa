@@ -113,9 +113,6 @@ class _agentsMainState extends State<agentsMain> {
                                             image: NetworkImage(
                                                 "http://212.24.108.54/wsaAdmin/images/${foundAll[index]['imageUrl']}"),
                                             fit: BoxFit.cover)),
-                                    //width: 500,
-                                    // width: 80,
-                                    // height: 218,
                                   ),
                                   Text("${foundAll[index]['name']}",
                                       style: TextStyle(

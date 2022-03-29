@@ -124,39 +124,6 @@ showLoading(context) {
                   SizedBox(
                     height: 10,
                   ),
-                  GetBuilder<homecontroller>(builder: (controller) {
-                    return (TextFormField(
-                      style: TextStyle(
-                          color: MyColors.color3,
-                          fontFamily: 'Almarai',
-                          fontSize: 10),
-                      textInputAction: TextInputAction.next,
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                        hintText: 'رقم الهاتف',
-                      ),
-                      validator: (text) {
-                        if (text!.length > 15) {
-                          return "can not enter bigest than 15";
-                        }
-                        if (text.length < 2) {
-                          return "can not enter less than 9";
-                        }
-                        return null;
-                      },
-                      onChanged: (value) {
-                        // do something
-                      },
-                      onSaved: (string) {
-                        print("on saved");
-                        tel = string;
-                        // controller.SaveFirstName(string);
-                      },
-                    ));
-                  }),
-                  SizedBox(
-                    height: 10,
-                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
